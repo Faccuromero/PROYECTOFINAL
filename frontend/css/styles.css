@@ -1,0 +1,848 @@
+/* ==============================
+   CONFIGURACIÓN GENERAL
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #064e3b);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 35px 15px;
+    color: #111827;
+}
+
+/* ==============================
+   CONTENEDORES
+============================== */
+
+.contenedor,
+.contenedor-grande,
+.contenedor-admin {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    animation: aparecer 0.4s ease;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 450px;
+    padding: 35px;
+    text-align: center;
+}
+
+.contenedor-grande {
+    width: 95%;
+    max-width: 1050px;
+    padding: 35px;
+}
+
+.contenedor-admin {
+    width: 98%;
+    max-width: 1350px;
+    padding: 35px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==============================
+   TÍTULOS Y TEXTOS
+============================== */
+
+h1 {
+    color: #0f172a;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    color: #1e293b;
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: #065f46;
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #475569;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.encabezado {
+    text-align: center;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.encabezado p {
+    font-weight: 600;
+    color: #065f46;
+}
+
+/* ==============================
+   FORMULARIOS
+============================== */
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 22px;
+}
+
+label {
+    margin-bottom: 7px;
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 14px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px 14px;
+    margin-bottom: 17px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #f8fafc;
+    transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #059669;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.18);
+}
+
+/* ==============================
+   BOTONES
+============================== */
+
+button,
+.boton-link {
+    padding: 13px 16px;
+    background: linear-gradient(135deg, #059669, #047857);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover,
+.boton-link:hover {
+    background: linear-gradient(135deg, #047857, #065f46);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(5, 150, 105, 0.35);
+    text-decoration: none;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-secundario {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #334155, #1e293b);
+}
+
+.btn-secundario:hover {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.35);
+}
+
+.btn-cancelar {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    padding: 9px 12px;
+    font-size: 13px;
+}
+
+.btn-cancelar:hover {
+    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+    box-shadow: 0 8px 18px rgba(220, 38, 38, 0.35);
+}
+
+/* ==============================
+   LINKS
+============================== */
+
+a {
+    color: #059669;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a:hover {
+    color: #047857;
+    text-decoration: underline;
+}
+
+/* ==============================
+   MENSAJES
+============================== */
+
+.mensaje {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.exito {
+    color: #166534;
+    background: #dcfce7;
+    border: 1px solid #86efac;
+}
+
+.error {
+    color: #991b1b;
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+}
+
+/* ==============================
+   PÁGINA DE INICIO SIMPLE
+============================== */
+
+.menu-inicio {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 28px 0;
+}
+
+.info-inicio {
+    margin-top: 22px;
+    padding: 18px;
+    background: #f8fafc;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+}
+
+/* ==============================
+   PANELES
+============================== */
+
+.panel {
+    margin-top: 25px;
+    padding: 24px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.panel h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.panel h2::before {
+    content: "";
+    width: 8px;
+    height: 26px;
+    border-radius: 10px;
+    background: #059669;
+}
+
+/* ==============================
+   DASHBOARD ADMIN
+============================== */
+
+.dashboard-admin {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.card-resumen {
+    background: linear-gradient(135deg, #ffffff, #ecfdf5);
+    border: 1px solid #bbf7d0;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+    transition: 0.25s ease;
+}
+
+.card-resumen:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.16);
+}
+
+.card-resumen span {
+    display: block;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-resumen strong {
+    display: block;
+    color: #064e3b;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.card-resumen.ingreso {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border-color: #86efac;
+}
+
+.card-resumen.ingreso strong {
+    color: #059669;
+}
+
+.card-resumen.cancha-destacada {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    border-color: #7dd3fc;
+}
+
+.card-resumen.cancha-destacada strong {
+    color: #0369a1;
+    font-size: 24px;
+}
+
+/* ==============================
+   FILTROS ADMIN
+============================== */
+
+.filtros-admin {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.filtros-admin div {
+    display: flex;
+    flex-direction: column;
+}
+
+.filtros-admin label {
+    color: #1e293b;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.filtros-admin input,
+.filtros-admin select {
+    margin-bottom: 0;
+}
+
+.acciones-filtros {
+    justify-content: flex-end;
+}
+
+#btnLimpiarFiltros {
+    background: linear-gradient(135deg, #334155, #1e293b);
+}
+
+#btnLimpiarFiltros:hover {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.contador-reservas {
+    margin-top: 15px;
+    padding: 10px 12px;
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #86efac;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* ==============================
+   HORARIOS
+============================== */
+
+.lista-horarios {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 12px;
+}
+
+.horario {
+    padding: 14px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid #d1d5db;
+    transition: all 0.2s ease;
+}
+
+.horario span {
+    display: block;
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.horario strong {
+    font-size: 14px;
+}
+
+.horario.disponible {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #86efac;
+}
+
+.horario.disponible:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(22, 101, 52, 0.18);
+}
+
+.horario.ocupado {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+}
+
+/* ==============================
+   TABLAS
+============================== */
+
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 1200px;
+}
+
+th,
+td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background: #0f172a;
+    color: white;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tr:hover {
+    background: #ecfdf5;
+}
+
+/* ==============================
+   ESTADOS
+============================== */
+
+.estado-activa {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #166534;
+    background: #dcfce7;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.estado-cancelada {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #991b1b;
+    background: #fee2e2;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.estado-finalizada {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #374151;
+    background: #e5e7eb;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.sin-accion {
+    color: #64748b;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* ==============================
+   SELECT DESHABILITADOS
+============================== */
+
+option:disabled {
+    color: #9ca3af;
+}
+
+/* ==============================
+   MODAL CONFIRMAR RESERVA USUARIO
+============================== */
+
+.modal-reserva {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-reserva.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    width: 100%;
+    max-width: 460px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    animation: aparecerModal 0.2s ease;
+}
+
+.modal-contenido h2 {
+    margin: 0;
+    color: #064e3b;
+    font-size: 26px;
+}
+
+.modal-subtitulo {
+    margin: 8px 0 20px;
+    color: #64748b;
+    font-size: 15px;
+}
+
+.modal-detalle {
+    background: #ecfdf5;
+    border: 1px solid #86efac;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 22px;
+}
+
+.modal-detalle p {
+    margin: 10px 0;
+    color: #334155;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 15px;
+}
+
+.modal-detalle strong {
+    color: #064e3b;
+}
+
+.modal-total {
+    border-top: 1px solid #86efac;
+    padding-top: 12px;
+    margin-top: 14px !important;
+    font-size: 18px !important;
+}
+
+.modal-total span {
+    font-weight: bold;
+    color: #059669;
+}
+
+.modal-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-modal-cancelar,
+.btn-modal-confirmar {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn-modal-cancelar {
+    background: #e5e7eb;
+    color: #334155;
+}
+
+.btn-modal-cancelar:hover {
+    background: #cbd5e1;
+}
+
+.btn-modal-confirmar {
+    background: #059669;
+    color: white;
+}
+
+.btn-modal-confirmar:hover {
+    background: #047857;
+}
+
+/* ==============================
+   MODAL CANCELAR RESERVA ADMIN
+============================== */
+
+.modal-admin-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999 !important;
+    padding: 20px !important;
+}
+
+.modal-admin-overlay.activo {
+    display: flex !important;
+}
+
+.modal-admin-contenido {
+    width: 100% !important;
+    max-width: 430px !important;
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 28px !important;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35) !important;
+    animation: aparecerModalAdmin 0.2s ease !important;
+}
+
+.modal-admin-contenido h2 {
+    color: #991b1b !important;
+    font-size: 26px !important;
+    margin-bottom: 12px !important;
+}
+
+.modal-admin-texto {
+    color: #334155 !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 12px !important;
+}
+
+.modal-admin-aviso {
+    background: #fef2f2 !important;
+    color: #7f1d1d !important;
+    border: 1px solid #fecaca !important;
+    border-left: 5px solid #dc2626 !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+    margin-bottom: 22px !important;
+    line-height: 1.5 !important;
+}
+
+.modal-admin-acciones {
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+}
+
+.btn-modal-volver,
+.btn-modal-eliminar {
+    border: none !important;
+    padding: 12px 18px !important;
+    border-radius: 11px !important;
+    cursor: pointer !important;
+    font-weight: bold !important;
+    font-size: 15px !important;
+}
+
+.btn-modal-volver {
+    background: #e5e7eb !important;
+    color: #334155 !important;
+}
+
+.btn-modal-volver:hover {
+    background: #cbd5e1 !important;
+}
+
+.btn-modal-eliminar {
+    background: linear-gradient(135deg, #dc2626, #991b1b) !important;
+    color: white !important;
+}
+
+.btn-modal-eliminar:hover {
+    background: linear-gradient(135deg, #b91c1c, #7f1d1d) !important;
+}
+
+/* ==============================
+   ANIMACIONES
+============================== */
+
+@keyframes aparecerModal {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes aparecerModalAdmin {
+    from {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 1000px) {
+    .dashboard-admin {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filtros-admin {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .contenedor,
+    .contenedor-grande,
+    .contenedor-admin {
+        padding: 24px;
+        border-radius: 14px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+
+    th,
+    td {
+        font-size: 12px;
+        padding: 9px;
+    }
+
+    button,
+    .boton-link {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .lista-horarios {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    }
+
+    .dashboard-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-acciones,
+    .modal-admin-acciones {
+        flex-direction: column;
+    }
+
+    .btn-modal-cancelar,
+    .btn-modal-confirmar,
+    .btn-modal-volver,
+    .btn-modal-eliminar {
+        width: 100%;
+    }
+
+    .modal-detalle p {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .link-olvido {
+    display: block;
+    margin-top: 14px;
+    color: #059669;
+    font-weight: 700;
+    text-align: center;
+}
+
+.link-olvido:hover {
+    color: #047857;
+    text-decoration: underline;
+}
+/* ==============================
+   OCULTAR ELEMENTOS
+============================== */
+
+.oculto {
+    display: none !important;
+}
+}

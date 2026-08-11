@@ -1,0 +1,759 @@
+/* ==============================
+   ESTILO GENERAL
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #020617 0%, #0f172a 35%, #f8fafc 35%, #f8fafc 100%);
+    color: #1f2937;
+}
+
+/* ==============================
+   HEADER
+============================== */
+
+.header-principal {
+    min-height: 100vh;
+    color: white;
+    background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.35), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.28), transparent 35%),
+        linear-gradient(135deg, #020617 0%, #064e3b 45%, #022c22 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.header-principal::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    background: rgba(16, 185, 129, 0.18);
+    border-radius: 50%;
+    top: 120px;
+    right: -120px;
+    filter: blur(10px);
+}
+
+.header-principal::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(14, 165, 233, 0.18);
+    border-radius: 50%;
+    bottom: 80px;
+    left: -80px;
+    filter: blur(10px);
+}
+
+.navbar {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.logo::first-letter {
+    color: #34d399;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #34d399;
+}
+
+.btn-login {
+    background: linear-gradient(135deg, #22c55e, #14b8a6);
+    color: white !important;
+    padding: 11px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(20, 184, 166, 0.35);
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #16a34a, #0f766e);
+    color: white !important;
+}
+
+/* ==============================
+   HERO
+============================== */
+
+.hero {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 90px 0 110px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 55px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-texto h1 {
+    font-size: 58px;
+    margin-bottom: 24px;
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+}
+
+.hero-texto p {
+    font-size: 19px;
+    line-height: 1.8;
+    color: #d1fae5;
+    margin-bottom: 34px;
+    max-width: 680px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-principal,
+.btn-secundario {
+    padding: 15px 24px;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: 900;
+    transition: 0.25s ease;
+}
+
+.btn-principal {
+    background: linear-gradient(135deg, #22c55e, #14b8a6);
+    color: white;
+    box-shadow: 0 14px 30px rgba(34, 197, 94, 0.35);
+}
+
+.btn-principal:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 38px rgba(34, 197, 94, 0.45);
+}
+
+.btn-secundario {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-secundario:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.96);
+    color: #1f2937;
+    padding: 24px;
+    border-radius: 26px;
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.hero-card h2 {
+    color: #047857;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.hero-card ul {
+    list-style: none;
+}
+
+.hero-card li {
+    padding: 13px 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #334155;
+}
+
+.hero-card li strong {
+    color: #022c22;
+}
+
+/* ==============================
+   IMÁGENES
+============================== */
+
+.imagen-card {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 16px;
+    display: block;
+    background: #e5e7eb;
+    transition: 0.3s ease;
+}
+
+.card:hover .imagen-card {
+    transform: scale(1.03);
+}
+
+.imagen-info {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 22px;
+    margin-bottom: 18px;
+    display: block;
+    background: #e5e7eb;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.16);
+}
+
+.hero-card .imagen-card {
+    height: 220px;
+}
+
+/* ==============================
+   SECCIONES
+============================== */
+
+.seccion {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 85px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    color: #989898;
+    margin-bottom: 12px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+}
+
+.section-title p {
+    color: #64748b;
+    font-size: 17px;
+}
+
+/* ==============================
+   CARDS
+============================== */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.10);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 50px rgba(15, 23, 42, 0.18);
+    border-color: rgba(20, 184, 166, 0.5);
+}
+
+.card h3 {
+    color: #047857;
+    margin-bottom: 12px;
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.card p {
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* ==============================
+   INFO CLUB
+============================== */
+
+.info-club {
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(236, 253, 245, 0.96));
+    border-radius: 28px;
+    padding: 42px;
+    box-shadow: 0 18px 45px rgb(255, 253, 253);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px;
+    border: 1px solid rgba(16, 185, 129, 0.18);
+}
+
+.info-club h3 {
+    color: #022c22;
+    margin-bottom: 16px;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.info-club p {
+    line-height: 1.85;
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+.lista-info {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.lista-info li {
+    padding: 12px 0;
+    border-bottom: 1px solid #d1fae5;
+    color: #334155;
+    font-weight: 600;
+}
+
+.lista-info li::before {
+    content: "✓";
+    color: #10b981;
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+/* ==============================
+   PRECIOS
+============================== */
+
+.precios {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+}
+
+.precio-card {
+    background:
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.22), transparent 35%),
+        linear-gradient(135deg, #ecfdf5, #ffffff);
+    border: 1px solid #a7f3d0;
+    border-radius: 26px;
+    padding: 36px;
+    text-align: center;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.10);
+    transition: 0.3s ease;
+}
+
+.precio-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.16);
+}
+
+.precio-card h3 {
+    color: #022c22;
+    font-size: 27px;
+    margin-bottom: 12px;
+    font-weight: 900;
+}
+
+.precio-card p {
+    color: #475569;
+}
+
+.precio {
+    font-size: 44px;
+    font-weight: 900;
+    color: #059669;
+    margin: 18px 0;
+}
+
+/* ==============================
+   CONTACTO
+============================== */
+
+.contacto {
+    background:
+        radial-gradient(circle at top left, rgba(34, 197, 94, 0.28), transparent 35%),
+        linear-gradient(135deg, #022c22, #064e3b, #0f766e);
+    color: white;
+    border-radius: 30px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px;
+    box-shadow: 0 22px 55px rgba(2, 44, 34, 0.28);
+    overflow: hidden;
+}
+
+.contacto h2 {
+    font-size: 38px;
+    margin-bottom: 16px;
+    font-weight: 900;
+}
+
+.contacto p {
+    color: #d1fae5;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.contacto-datos {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 28px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.contacto-datos p {
+    padding: 8px 0;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+
+footer {
+    background:
+        linear-gradient(135deg, #020617, #022c22);
+    color: white;
+    padding: 42px 0 30px;
+    margin-top: 70px;
+}
+
+.footer-contenido {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 34px;
+}
+
+footer h3 {
+    margin-bottom: 16px;
+    color: #34d399;
+    font-size: 21px;
+}
+
+footer p,
+footer a {
+    color: #d1fae5;
+    font-size: 15px;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-copy {
+    text-align: center;
+    padding-top: 26px;
+    margin-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    color: #a7f3d0;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 900px) {
+    .header-principal {
+        min-height: auto;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 55px 0 70px;
+    }
+
+    .hero-texto h1 {
+        font-size: 40px;
+    }
+
+    .hero-texto p {
+        font-size: 17px;
+    }
+
+    .cards,
+    .info-club,
+    .precios,
+    .contacto,
+    .footer-contenido {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .imagen-card {
+        height: 190px;
+    }
+
+    .imagen-info {
+        height: 220px;
+    }
+
+    .hero-card .imagen-card {
+        height: 210px;
+    }
+
+    .section-title h2 {
+        font-size: 32px;
+    }
+
+    .contacto {
+        padding: 32px;
+    }
+
+    /* ==============================
+   DASHBOARD ADMIN
+============================== */
+
+.dashboard-admin {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.card-resumen {
+    background: linear-gradient(135deg, #ffffff, #ecfdf5);
+    border: 1px solid #bbf7d0;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+    transition: 0.25s ease;
+}
+
+.card-resumen:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.16);
+}
+
+.card-resumen span {
+    display: block;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-resumen strong {
+    display: block;
+    color: #064e3b;
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.card-resumen.ingreso {
+    background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+    border-color: #86efac;
+}
+
+.card-resumen.ingreso strong {
+    color: #059669;
+}
+
+.card-resumen.cancha-destacada {
+    background: linear-gradient(135deg, #eff6ff, #ecfeff);
+    border-color: #7dd3fc;
+}
+
+.card-resumen.cancha-destacada strong {
+    color: #0369a1;
+    font-size: 24px;
+}
+
+@media (max-width: 1000px) {
+    .dashboard-admin {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-admin {
+        grid-template-columns: 1fr;
+    }
+}
+.estado-finalizada {
+    background: #e5e7eb;
+    color: #374151;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.sin-accion {
+    color: #64748b;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* ==============================
+   MODAL CANCELAR RESERVA ADMIN
+============================== */
+
+.modal-admin-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+}
+
+.modal-admin-overlay.activo {
+    display: flex;
+}
+
+.modal-admin-contenido {
+    width: 100%;
+    max-width: 430px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+    animation: aparecerModalAdmin 0.2s ease;
+}
+
+.modal-admin-contenido h2 {
+    color: #991b1b;
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+.modal-admin-texto {
+    color: #334155;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.modal-admin-aviso {
+    background: #fef2f2;
+    color: #7f1d1d;
+    border: 1px solid #fecaca;
+    border-left: 5px solid #dc2626;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    line-height: 1.5;
+}
+
+.modal-admin-acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-modal-volver,
+.btn-modal-eliminar {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 11px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.btn-modal-volver {
+    background: #e5e7eb;
+    color: #334155;
+}
+
+.btn-modal-volver:hover {
+    background: #cbd5e1;
+}
+
+.btn-modal-eliminar {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+    color: white;
+}
+
+.btn-modal-eliminar:hover {
+    background: linear-gradient(135deg, #b91c1c, #7f1d1d);
+}
+
+@keyframes aparecerModalAdmin {
+    from {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 500px) {
+    .modal-admin-acciones {
+        flex-direction: column;
+    }
+
+    .btn-modal-volver,
+    .btn-modal-eliminar {
+        width: 100%;
+    }
+}
+
+}

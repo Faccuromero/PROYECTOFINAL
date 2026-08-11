@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <main class="contenedor">
+        <h1>Recuperar contraseña</h1>
+
+        <p>
+            Primero ingresá tu correo electrónico. El sistema generará un código de recuperación.
+        </p>
+
+        <!-- PASO 1: PEDIR CORREO -->
+        <form id="formCorreo" class="formulario">
+            <label for="correo">Correo electrónico</label>
+            <input 
+                type="email" 
+                id="correo" 
+                placeholder="Ingrese su correo electrónico"
+                required
+            >
+
+            <button type="submit" id="btnEnviarCodigo">
+                Enviar código
+            </button>
+        </form>
+
+        <!-- PASO 2: INGRESAR CÓDIGO Y NUEVA CONTRASEÑA -->
+        <form id="formCambiarPassword" class="formulario oculto">
+            <label for="codigo">Código de recuperación</label>
+            <input 
+                type="text" 
+                id="codigo" 
+                placeholder="Ingrese el código recibido"
+                required
+            >
+
+            <label for="nuevaPassword">Nueva contraseña</label>
+            <input 
+                type="password" 
+                id="nuevaPassword" 
+                placeholder="Ingrese la nueva contraseña"
+                required
+            >
+
+            <label for="confirmarPassword">Confirmar contraseña</label>
+            <input 
+                type="password" 
+                id="confirmarPassword" 
+                placeholder="Repita la nueva contraseña"
+                required
+            >
+
+            <button type="submit" id="btnCambiarPassword">
+                Cambiar contraseña
+            </button>
+        </form>
+
+        <p id="mensaje" class="mensaje"></p>
+
+        <p>
+            <a href="login.html">Volver al inicio de sesión</a>
+        </p>
+    </main>
+
+    <script src="js/recuperar.js"></script>
+</body>
+</html>

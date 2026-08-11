@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Cancha - Club Deportivo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="contenedor-grande">
+        <header class="encabezado">
+            <h1>Reservar cancha</h1>
+            <p id="bienvenida"></p>
+            <button id="btnCerrarSesion" class="btn-secundario">Cerrar sesión</button>
+        </header>
+
+        <section class="panel">
+            <h2>Nueva reserva</h2>
+
+            <form id="formReserva" class="formulario">
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="cancha">Cancha</label>
+                <select id="cancha" name="cancha" required>
+                    <option value="">Seleccione una cancha</option>
+                </select>
+
+                <label for="hora">Hora de inicio</label>
+                <select id="hora" name="hora" required>
+                    <option value="">Seleccione un horario</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                    <option value="22:00">22:00</option>
+                    <option value="23:00">23:00</option>
+                    <option value="00:00">00:00</option>
+                </select>
+
+                <label for="duracion">Cantidad de horas</label>
+                <select id="duracion" name="duracion" required>
+                    <option value="">Seleccione duración</option>
+                    <option value="1">1 hora</option>
+                    <option value="2">2 horas</option>
+                    <option value="3">3 horas</option>
+                    <option value="4">4 horas</option>
+                    <option value="5">5 horas</option>
+                </select>
+
+                <button type="submit">Reservar</button>
+            </form>
+
+            <p id="mensaje" class="mensaje"></p>
+        </section>
+
+        <section class="panel">
+            <h2>Horarios ocupados</h2>
+
+            <div id="listaHorarios" class="lista-horarios">
+                Seleccioná una fecha y una cancha para ver los horarios.
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Mis reservas</h2>
+            <p>Acá podés ver tus reservas y cancelar las que estén activas.</p>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cancha</th>
+                            <th>Tipo</th>
+                            <th>Fecha</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Duración</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaMisReservas">
+                        <tr>
+                            <td colspan="9">Cargando reservas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL CONFIRMAR RESERVA -->
+<div id="modalConfirmacion" class="modal-reserva">
+    <div class="modal-contenido">
+        <h2>Confirmar reserva</h2>
+        <p class="modal-subtitulo">Revisá los datos antes de confirmar tu turno.</p>
+
+        <div class="modal-detalle">
+            <p><strong>Cancha:</strong> <span id="modalCancha"></span></p>
+            <p><strong>Fecha:</strong> <span id="modalFecha"></span></p>
+            <p><strong>Hora de inicio:</strong> <span id="modalHora"></span></p>
+            <p><strong>Duración:</strong> <span id="modalDuracion"></span></p>
+            <p><strong>Precio por hora:</strong> <span id="modalPrecioHora"></span></p>
+            <p class="modal-total"><strong>Total a pagar:</strong> <span id="modalTotal"></span></p>
+        </div>
+
+        <div class="modal-acciones">
+            <button type="button" id="btnCancelarModal" class="btn-modal-cancelar">
+                Cancelar
+            </button>
+
+            <button type="button" id="btnConfirmarModal" class="btn-modal-confirmar">
+                Confirmar reserva
+            </button>
+        </div>
+    </div>
+</div>
+
+    <script src="js/reservas.js"></script>
+</body>
+</html>

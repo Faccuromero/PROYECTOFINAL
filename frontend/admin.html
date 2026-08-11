@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador - Club Deportivo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="contenedor-admin">
+        <header class="encabezado">
+            <h1>Panel de Administrador</h1>
+            <p id="bienvenidaAdmin"></p>
+            <button id="btnCerrarSesion" class="btn-secundario">Cerrar sesión</button>
+        </header>
+
+        <section class="panel">
+    <h2>Resumen del administrador</h2>
+
+    <div class="dashboard-admin">
+        <div class="card-resumen">
+            <span>Total de reservas</span>
+            <strong id="totalReservasAdmin">0</strong>
+        </div>
+
+        <div class="card-resumen">
+            <span>Reservas activas</span>
+            <strong id="reservasActivasAdmin">0</strong>
+        </div>
+
+        <div class="card-resumen">
+            <span>Canceladas</span>
+            <strong id="reservasCanceladasAdmin">0</strong>
+        </div>
+
+        <div class="card-resumen">
+            <span>Reservas de hoy</span>
+            <strong id="reservasHoyAdmin">0</strong>
+        </div>
+
+        <div class="card-resumen ingreso">
+            <span>Ingresos totales</span>
+            <strong id="ingresosTotalesAdmin">$0</strong>
+        </div>
+
+        <div class="card-resumen ingreso">
+            <span>Ingresos de hoy</span>
+            <strong id="ingresosHoyAdmin">$0</strong>
+        </div>
+
+        <div class="card-resumen ingreso">
+            <span>Ingresos del mes</span>
+            <strong id="ingresosMesAdmin">$0</strong>
+        </div>
+
+        <div class="card-resumen cancha-destacada">
+            <span>Cancha más reservada</span>
+            <strong id="canchaMasReservadaAdmin">Sin datos</strong>
+        </div>
+    </div>
+</section>
+
+        <section class="panel">
+            <h2>Reservas realizadas</h2>
+            <p>
+                En esta sección el administrador puede ver todas las reservas,
+                junto con los datos de la persona que realizó la reserva.
+            </p>
+
+            <p id="mensaje" class="mensaje"></p>
+
+            <div class="tabla-contenedor">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Nombre completo</th>
+                            <th>DNI</th>
+                            <th>Teléfono</th>
+                            <th>Cancha</th>
+                            <th>Tipo</th>
+                            <th>Fecha</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Duración</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaReservas">
+                        <tr>
+                            <td colspan="13">Cargando reservas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- MODAL CANCELAR RESERVA ADMIN -->
+<div id="modalCancelarReservaAdmin" class="modal-admin-overlay">
+    <div class="modal-admin-contenido">
+        <h2>Cancelar reserva</h2>
+
+        <p class="modal-admin-texto">
+            ¿Estás seguro de que querés cancelar esta reserva?
+        </p>
+
+        <p class="modal-admin-aviso">
+            Esta acción cambiará el estado de la reserva a <strong>cancelada</strong>.
+        </p>
+
+        <div class="modal-admin-acciones">
+            <button type="button" id="btnCerrarModalCancelarAdmin" class="btn-modal-volver">
+                Volver
+            </button>
+
+            <button type="button" id="btnConfirmarCancelacionAdmin" class="btn-modal-eliminar">
+                Cancelar reserva
+            </button>
+        </div>
+    </div>
+</div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

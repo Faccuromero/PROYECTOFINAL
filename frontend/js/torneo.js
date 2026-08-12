@@ -1,80 +1,81 @@
-// =====================================================
+// ============================================================
 // TORNEOS DE PADEL - CLUB DEPORTIVO
-// =====================================================
+// VERSION COMPLETA
+// ============================================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =====================================================
-    // ELEMENTOS DEL HTML
-    // =====================================================
+    // ========================================================
+    // ELEMENTOS
+    // ========================================================
 
-    const cantidadParejasInput =
-        document.getElementById("cantidadParejas");
+    const nombreTorneoInput = document.getElementById("nombreTorneo");
+    const categoriaTorneoInput = document.getElementById("categoriaTorneo");
+    const tipoTorneoInput = document.getElementById("tipoTorneo");
 
-    const cantidadGruposInput =
-        document.getElementById("cantidadGrupos");
+    const cantidadParejasInput = document.getElementById("cantidadParejas");
+    const cantidadGruposInput = document.getElementById("cantidadGrupos");
+    const clasificadosInput = document.getElementById("clasificadosPorGrupo");
+    const mejoresTercerosInput = document.getElementById("cantidadMejoresTerceros");
 
+    const categoriaParejaInput = document.getElementById("categoriaPareja");
+    const jugador1Input = document.getElementById("jugador1NombreCompleto");
+    const jugador2Input = document.getElementById("jugador2NombreCompleto");
+
+    const btnContinuarDatos = document.getElementById("btnContinuarDatos");
+    const btnContinuarParejas = document.getElementById("btnContinuarParejas");
+    const btnContinuarZonas = document.getElementById("btnContinuarZonas");
+
+    const btnVolverDatos = document.getElementById("btnVolverDatos");
+    const btnVolverParejas = document.getElementById("btnVolverParejas");
+    const btnVolverZonas = document.getElementById("btnVolverZonas");
+
+    const btnAgregarPareja = document.getElementById("btnAgregarPareja");
+    const btnGenerar = document.getElementById("btnGenerar");
+
+    const btnNuevoTorneo = document.getElementById("btnNuevoTorneo");
+    const btnNuevoTorneoFinal = document.getElementById("btnNuevoTorneoFinal");
+
+    const modalNuevoTorneo = document.getElementById("modalNuevoTorneo");
+    const btnCancelarNuevoTorneo = document.getElementById("btnCancelarNuevoTorneo");
+    const btnConfirmarNuevoTorneo = document.getElementById("btnConfirmarNuevoTorneo");
+
+    const mensaje = document.getElementById("mensaje");
+
+    // PASOS
+    const pasos = {
+        1: document.getElementById("pasoDatos"),
+        2: document.getElementById("pasoParejas"),
+        3: document.getElementById("pasoZonas"),
+        4: document.getElementById("pasoConfirmar")
+    };
+
+    const indicadores = {
+        1: document.getElementById("indicadorPaso1"),
+        2: document.getElementById("indicadorPaso2"),
+        3: document.getElementById("indicadorPaso3"),
+        4: document.getElementById("indicadorPaso4")
+    };
+
+    // CONFIGURACIÓN DE ZONAS
     const contenedorConfiguracionZonas =
         document.getElementById("contenedorConfiguracionZonas");
 
-    const parejasPorGrupoInput =
-        document.getElementById("parejasPorGrupo");
+    const resumenDistribucion =
+        document.getElementById("resumenDistribucion");
 
-    const clasificadosPorGrupoInput =
-        document.getElementById("clasificadosPorGrupo");
+    // LISTA PAREJAS
+    const listaParejas = document.getElementById("listaParejas");
+    const contadorParejas = document.getElementById("contadorParejas");
+    const progresoParejas = document.getElementById("progresoParejas");
 
-    const mejoresTercerosInput =
-        document.getElementById("cantidadMejoresTerceros") ||
-        document.getElementById("mejoresTerceros");
+    // DESCRIPCIÓN MODALIDAD
+    const descripcionTipoTorneo =
+        document.getElementById("descripcionTipoTorneo");
 
-    const formatoTorneoInput =
-        document.getElementById("tipoTorneo") ||
-        document.getElementById("formatoTorneo");
-
-    const categoriaTorneoInput =
-        document.getElementById("categoriaTorneo");
-
-    const categoriaParejaInput =
-        document.getElementById("categoriaPareja");
-
-    const btnAgregarPareja =
-        document.getElementById("btnAgregarPareja");
-
-    const btnGenerar =
-        document.getElementById("btnGenerar");
-
-    const btnNuevoTorneo =
-        document.getElementById("btnNuevoTorneo");
-
-    const listaParejas =
-        document.getElementById("listaParejas");
-
-    const contadorParejas =
-        document.getElementById("contadorParejas");
-
-    const contenedorZonas =
-        document.getElementById("contenedorZonas");
-
-    const cuadroEliminacion =
-        document.getElementById("cuadroEliminacion");
-
-    const informacionTorneo =
-        document.getElementById("informacionTorneo");
-
-    const seccionEliminacion =
-        document.getElementById("seccionEliminacion");
-
-    const totalParejas =
-        document.getElementById("totalParejas");
-
-    const totalGrupos =
-        document.getElementById("totalGrupos");
-
-    const totalClasificados =
-        document.getElementById("totalClasificados");
-
-    const mensaje =
-        document.getElementById("mensaje");
+    // RESUMEN
+    const resumenNombreTorneo =
+        document.getElementById("resumenNombreTorneo");
 
     const resumenCategoria =
         document.getElementById("resumenCategoria");
@@ -91,199 +92,1191 @@ document.addEventListener("DOMContentLoaded", () => {
     const resumenClasificados =
         document.getElementById("resumenClasificados");
 
-    const nombreFormatoTorneo =
-        document.getElementById("nombreFormatoTorneo");
+    const resumenTerceros =
+        document.getElementById("resumenTerceros");
 
+    // TORNEO GENERADO
+    const informacionTorneo =
+        document.getElementById("informacionTorneo");
 
-    // =====================================================
+    const totalParejas =
+        document.getElementById("totalParejas");
+
+    const totalGrupos =
+        document.getElementById("totalGrupos");
+
+    const totalClasificados =
+        document.getElementById("totalClasificados");
+
+    // ZONAS
+    const contenedorZonas =
+        document.getElementById("contenedorZonas");
+
+    // RESULTADOS
+    const seccionResultados =
+        document.getElementById("seccionResultados");
+
+    const contenedorPartidos =
+        document.getElementById("contenedorPartidos");
+
+    // TABLAS
+    const seccionTablas =
+        document.getElementById("seccionTablas");
+
+    const contenedorTablas =
+        document.getElementById("contenedorTablas");
+
+    // CLASIFICADOS
+    const seccionClasificados =
+        document.getElementById("seccionClasificados");
+
+    const listaClasificados =
+        document.getElementById("listaClasificados");
+
+    // ELIMINACIÓN
+    const seccionEliminacion =
+        document.getElementById("seccionEliminacion");
+
+    const cuadroEliminacion =
+        document.getElementById("cuadroEliminacion");
+
+    // CAMPEÓN
+    const seccionCampeon =
+        document.getElementById("seccionCampeon");
+
+    const nombreCampeon =
+        document.getElementById("nombreCampeon");
+
+    // ========================================================
     // VARIABLES
-    // =====================================================
+    // ========================================================
 
-    let parejas = [];
+    let parejas = JSON.parse(
+        localStorage.getItem("parejasClubDeportivo")
+    ) || [];
+
+    let torneoActual = null;
 
     let grupos = [];
-
     let partidos = [];
-
-    let cantidadParejas = 0;
-
-    let cantidadGrupos = 0;
-
-    let parejasPorGrupo = 4;
-
-    let clasificadosPorGrupo = 2;
-
-    let mejoresTerceros = 0;
-
-    let formatoTorneo = "9_games";
-
-    let categoriaTorneo = "";
-
-    let parejasTorneoActual = [];
-
-    let torneoGenerado = false;
-
-    let zonasPersonalizadas = [];
 
     let canchas = [];
 
+    let pasoActual = 1;
 
-    // =====================================================
-    // CLAVES DE LOCALSTORAGE
-    // =====================================================
+    // ========================================================
+    // INICIO
+    // ========================================================
 
-    const CLAVE_PAREJAS =
-        "parejasClubDeportivo";
+    iniciar();
 
-    const CLAVE_TORNEO_GENERAL =
-        "torneoClubDeportivo";
+    async function iniciar() {
 
+        configurarEventos();
 
-    // =====================================================
-    // NOMBRES DE GRUPOS
-    // =====================================================
+        cargarCanchas();
 
-    const letrasGrupos = [
-        "A", "B", "C", "D",
-        "E", "F", "G", "H",
-        "I", "J", "K", "L",
-        "M", "N", "O", "P",
-        "Q", "R", "S", "T",
-        "U", "V", "W", "X",
-        "Y", "Z"
-    ];
+        cargarUltimoTorneo();
 
+        sincronizarCategoriaPareja();
 
-    // =====================================================
-    // INICIALIZAR
-    // =====================================================
-
-    cargarParejasGlobales();
-
-    cargarCanchas().then(() => {
-
-        cargarTorneo();
+        actualizarDescripcionModalidad();
 
         actualizarContador();
 
         actualizarResumen();
 
-    });
-
-
-    // =====================================================
-    // EVENTOS DE CONFIGURACIÓN
-    // =====================================================
-
-    if (categoriaTorneoInput) {
-
-        categoriaTorneoInput.addEventListener("change", () => {
-
-            cargarTorneoPorCategoria();
-
-        });
-
+        mostrarPaso(1);
     }
 
+    // ========================================================
+    // EVENTOS
+    // ========================================================
 
-    if (categoriaParejaInput) {
+    function configurarEventos() {
 
-        categoriaParejaInput.addEventListener("change", () => {
+        // --------------------------------------------
+        // CONTINUAR DATOS
+        // --------------------------------------------
+
+        btnContinuarDatos?.addEventListener("click", () => {
+
+            if (!validarDatosTorneo()) {
+                return;
+            }
+
+            sincronizarCategoriaPareja();
+
+            actualizarContador();
+
+            mostrarPaso(2);
+        });
+
+
+        // --------------------------------------------
+        // VOLVER DATOS
+        // --------------------------------------------
+
+        btnVolverDatos?.addEventListener("click", () => {
+            mostrarPaso(1);
+        });
+
+
+        // --------------------------------------------
+        // CONTINUAR PAREJAS
+        // --------------------------------------------
+
+        btnContinuarParejas?.addEventListener("click", () => {
+
+            if (!validarParejas()) {
+                return;
+            }
+
+            actualizarConfiguracionZonas();
+
+            mostrarPaso(3);
+        });
+
+
+        // --------------------------------------------
+        // VOLVER PAREJAS
+        // --------------------------------------------
+
+        btnVolverParejas?.addEventListener("click", () => {
+            mostrarPaso(2);
+        });
+
+
+        // --------------------------------------------
+        // CONTINUAR ZONAS
+        // --------------------------------------------
+
+        btnContinuarZonas?.addEventListener("click", () => {
+
+            if (!validarZonas()) {
+                return;
+            }
+
+            actualizarResumen();
+
+            mostrarPaso(4);
+        });
+
+
+        // --------------------------------------------
+        // VOLVER ZONAS
+        // --------------------------------------------
+
+        btnVolverZonas?.addEventListener("click", () => {
+            mostrarPaso(3);
+        });
+
+
+        // --------------------------------------------
+        // CATEGORIA TORNEO
+        // --------------------------------------------
+
+        categoriaTorneoInput?.addEventListener("change", () => {
+
+            sincronizarCategoriaPareja();
+
+            actualizarContador();
 
             mostrarParejas();
 
+            actualizarResumen();
         });
 
-    }
+
+        // --------------------------------------------
+        // CATEGORIA PAREJA
+        // --------------------------------------------
+
+        categoriaParejaInput?.addEventListener("change", () => {
+            mostrarParejas();
+        });
 
 
-    if (cantidadParejasInput) {
+        // --------------------------------------------
+        // MODALIDAD
+        // --------------------------------------------
 
-        cantidadParejasInput.addEventListener("input", () => {
+        tipoTorneoInput?.addEventListener("change", () => {
+            actualizarDescripcionModalidad();
+            actualizarResumen();
+        });
+
+
+        // --------------------------------------------
+        // CANTIDAD PAREJAS
+        // --------------------------------------------
+
+        cantidadParejasInput?.addEventListener("input", () => {
 
             actualizarContador();
 
             actualizarResumen();
-
-            guardarDatos();
-
         });
 
-    }
 
+        // --------------------------------------------
+        // CANTIDAD ZONAS
+        // --------------------------------------------
 
-    if (cantidadGruposInput) {
+        cantidadGruposInput?.addEventListener("input", () => {
 
-        cantidadGruposInput.addEventListener("input", () => {
-
-            crearConfiguracionZonas(true);
+            actualizarConfiguracionZonas();
 
             actualizarResumen();
-
-            guardarDatos();
-
         });
 
-    }
 
+        // --------------------------------------------
+        // CLASIFICADOS
+        // --------------------------------------------
 
-    if (clasificadosPorGrupoInput) {
+        clasificadosInput?.addEventListener("input", () => {
 
-        clasificadosPorGrupoInput.addEventListener("input", () => {
+            actualizarConfiguracionZonas();
 
             actualizarResumen();
-
-            guardarDatos();
-
         });
 
-    }
 
+        // --------------------------------------------
+        // MEJORES TERCEROS
+        // --------------------------------------------
 
-    if (mejoresTercerosInput) {
-
-        mejoresTercerosInput.addEventListener("input", () => {
-
+        mejoresTercerosInput?.addEventListener("input", () => {
             actualizarResumen();
+        });
 
-            guardarDatos();
+
+        // --------------------------------------------
+        // AGREGAR PAREJA
+        // --------------------------------------------
+
+        btnAgregarPareja?.addEventListener(
+            "click",
+            agregarPareja
+        );
+
+
+        // --------------------------------------------
+        // GENERAR TORNEO
+        // --------------------------------------------
+
+        btnGenerar?.addEventListener(
+            "click",
+            generarTorneo
+        );
+
+
+        // --------------------------------------------
+        // NUEVO TORNEO
+        // --------------------------------------------
+
+        btnNuevoTorneo?.addEventListener(
+            "click",
+            abrirModalNuevoTorneo
+        );
+
+        btnNuevoTorneoFinal?.addEventListener(
+            "click",
+            abrirModalNuevoTorneo
+        );
+
+
+        // --------------------------------------------
+        // MODAL
+        // --------------------------------------------
+
+        btnCancelarNuevoTorneo?.addEventListener(
+            "click",
+            cerrarModalNuevoTorneo
+        );
+
+        btnConfirmarNuevoTorneo?.addEventListener(
+            "click",
+            crearNuevoTorneo
+        );
+
+
+        modalNuevoTorneo?.addEventListener("click", (e) => {
+
+            if (e.target === modalNuevoTorneo) {
+                cerrarModalNuevoTorneo();
+            }
 
         });
 
     }
 
+    // ========================================================
+    // PASOS
+    // ========================================================
 
-    if (formatoTorneoInput) {
+    function mostrarPaso(numero) {
 
-        formatoTorneoInput.addEventListener("change", () => {
+        pasoActual = numero;
 
-            actualizarResumen();
+        Object.keys(pasos).forEach(num => {
 
-            guardarDatos();
+            const elemento = pasos[num];
+
+            if (!elemento) return;
+
+            if (Number(num) === numero) {
+                elemento.classList.remove("oculto");
+                elemento.style.display = "";
+            } else {
+                elemento.classList.add("oculto");
+                elemento.style.display = "none";
+            }
 
         });
 
+
+        Object.keys(indicadores).forEach(num => {
+
+            const indicador = indicadores[num];
+
+            if (!indicador) return;
+
+            indicador.classList.toggle(
+                "activo",
+                Number(num) === numero
+            );
+
+            if (Number(num) < numero) {
+                indicador.classList.add("completado");
+            } else {
+                indicador.classList.remove("completado");
+            }
+
+        });
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+    // ========================================================
+    // VALIDAR DATOS
+    // ========================================================
+
+    function validarDatosTorneo() {
+
+        const nombre =
+            nombreTorneoInput?.value.trim();
+
+        const categoria =
+            categoriaTorneoInput?.value;
+
+        const modalidad =
+            tipoTorneoInput?.value;
+
+
+        if (!nombre) {
+
+            mostrarMensaje(
+                "Ingresá un nombre para el torneo.",
+                "error"
+            );
+
+            nombreTorneoInput?.focus();
+
+            return false;
+        }
+
+
+        if (!categoria) {
+
+            mostrarMensaje(
+                "Seleccioná una categoría.",
+                "error"
+            );
+
+            categoriaTorneoInput?.focus();
+
+            return false;
+        }
+
+
+        if (!modalidad) {
+
+            mostrarMensaje(
+                "Seleccioná una modalidad de juego.",
+                "error"
+            );
+
+            tipoTorneoInput?.focus();
+
+            return false;
+        }
+
+
+        return true;
+    }
+
+    // ========================================================
+    // VALIDAR PAREJAS
+    // ========================================================
+
+    function validarParejas() {
+
+        const cantidad =
+            Number(cantidadParejasInput?.value);
+
+        const categoria =
+            categoriaTorneoInput?.value;
+
+        if (!cantidad || cantidad < 4) {
+
+            mostrarMensaje(
+                "El torneo debe tener al menos 4 parejas.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        const parejasCategoria =
+            obtenerParejasCategoria(categoria);
+
+
+        if (parejasCategoria.length !== cantidad) {
+
+            mostrarMensaje(
+                `Necesitás exactamente ${cantidad} parejas de ${nombreCategoria(categoria)}. Actualmente hay ${parejasCategoria.length}.`,
+                "error"
+            );
+
+            return false;
+        }
+
+
+        return true;
+    }
+
+    // ========================================================
+    // VALIDAR ZONAS
+    // ========================================================
+
+    function validarZonas() {
+
+        const cantidadParejas =
+            Number(cantidadParejasInput?.value);
+
+        const cantidadZonas =
+            Number(cantidadGruposInput?.value);
+
+        const clasificados =
+            Number(clasificadosInput?.value);
+
+        const mejoresTerceros =
+            Number(mejoresTercerosInput?.value) || 0;
+
+
+        if (!cantidadZonas || cantidadZonas < 1) {
+
+            mostrarMensaje(
+                "Ingresá la cantidad de zonas.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        if (cantidadZonas > cantidadParejas) {
+
+            mostrarMensaje(
+                "No podés tener más zonas que parejas.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        if (!clasificados || clasificados < 1) {
+
+            mostrarMensaje(
+                "Ingresá cuántas parejas clasifican por zona.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        // Máximo de 4 parejas por zona
+        const minimoPorZona =
+            Math.floor(cantidadParejas / cantidadZonas);
+
+        const maximoPorZona =
+            Math.ceil(cantidadParejas / cantidadZonas);
+
+
+        if (
+            minimoPorZona < 3 ||
+            maximoPorZona > 4
+        ) {
+
+            mostrarMensaje(
+                "Para este sistema las zonas deben quedar de 3 o 4 parejas. Modificá la cantidad de zonas.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        if (clasificados >= maximoPorZona) {
+
+            mostrarMensaje(
+                "No puede clasificar toda la zona. Tiene que quedar al menos una pareja eliminada.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        if (mejoresTerceros > 0 && clasificados > 2) {
+
+            mostrarMensaje(
+                "Los mejores terceros solo tienen sentido cuando clasifican 2 parejas por zona.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        const totalClasificados =
+            cantidadZonas * clasificados + mejoresTerceros;
+
+
+        if (totalClasificados < 2) {
+
+            mostrarMensaje(
+                "Tiene que haber al menos 2 clasificados para jugar eliminación.",
+                "error"
+            );
+
+            return false;
+        }
+
+
+        return true;
+    }
+
+    // ========================================================
+    // CATEGORIAS
+    // ========================================================
+
+    function nombreCategoria(categoria) {
+
+        const nombres = {
+
+            primera: "Primera categoría",
+            segunda: "Segunda categoría",
+            tercera: "Tercera categoría",
+            cuarta: "Cuarta categoría",
+            quinta: "Quinta categoría",
+            sexta: "Sexta categoría",
+            septima: "Séptima categoría",
+            octava: "Octava categoría"
+
+        };
+
+        return nombres[categoria] || "-";
     }
 
 
-    // =====================================================
-    // CARGAR CANCHAS DESDE LA BASE DE DATOS
-    // =====================================================
+    function sincronizarCategoriaPareja() {
+
+        if (!categoriaParejaInput) return;
+
+        categoriaParejaInput.value =
+            categoriaTorneoInput?.value || "";
+
+        categoriaParejaInput.disabled = true;
+    }
+
+
+    function obtenerParejasCategoria(categoria) {
+
+        return parejas.filter(
+            pareja => pareja.categoria === categoria
+        );
+    }
+
+    // ========================================================
+    // PAREJAS
+    // ========================================================
+
+    function agregarPareja() {
+
+        const categoria =
+            categoriaTorneoInput?.value;
+
+        const jugador1 =
+            jugador1Input?.value.trim();
+
+        const jugador2 =
+            jugador2Input?.value.trim();
+
+
+        if (!categoria) {
+
+            mostrarMensaje(
+                "Primero seleccioná la categoría del torneo.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!jugador1 || !jugador2) {
+
+            mostrarMensaje(
+                "Completá el nombre de los dos jugadores.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const yaExisteJugador =
+            parejas.some(p =>
+
+                p.jugador1.toLowerCase() === jugador1.toLowerCase() ||
+                p.jugador2.toLowerCase() === jugador1.toLowerCase() ||
+                p.jugador1.toLowerCase() === jugador2.toLowerCase() ||
+                p.jugador2.toLowerCase() === jugador2.toLowerCase()
+
+            );
+
+
+        if (yaExisteJugador) {
+
+            mostrarMensaje(
+                "Uno de esos jugadores ya está inscripto en otra pareja.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const nuevaPareja = {
+
+            id: Date.now() + Math.floor(Math.random() * 1000),
+
+            jugador1,
+            jugador2,
+
+            nombre:
+                `${jugador1} / ${jugador2}`,
+
+            categoria,
+
+            grupo: null,
+
+            puntos: 0,
+            pj: 0,
+            dg: 0,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        parejas.push(nuevaPareja);
+
+        guardarParejas();
+
+
+        jugador1Input.value = "";
+        jugador2Input.value = "";
+
+
+        mostrarParejas();
+
+        actualizarContador();
+
+
+        mostrarMensaje(
+            "Pareja agregada correctamente.",
+            "success"
+        );
+    }
+
+
+    function mostrarParejas() {
+
+        if (!listaParejas) return;
+
+        listaParejas.innerHTML = "";
+
+
+        const categoria =
+            categoriaTorneoInput?.value || "";
+
+
+        const lista =
+            obtenerParejasCategoria(categoria);
+
+
+        if (!lista.length) {
+
+            listaParejas.innerHTML = `
+                <div class="sin-parejas">
+                    👥 Todavía no agregaste ninguna pareja.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        lista.forEach((pareja, index) => {
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "pareja-cargada";
+
+
+            div.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        Pareja ${index + 1}
+                    </strong>
+
+                    <span>
+                        ${escapeHTML(pareja.nombre)}
+                    </span>
+
+                    <small>
+                        ${nombreCategoria(pareja.categoria)}
+                    </small>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-eliminar-pareja"
+                    data-id="${pareja.id}"
+                >
+                    🗑️
+                </button>
+
+            `;
+
+
+            listaParejas.appendChild(div);
+
+        });
+
+
+        listaParejas
+            .querySelectorAll(".btn-eliminar-pareja")
+            .forEach(btn => {
+
+                btn.addEventListener("click", () => {
+
+                    const id =
+                        Number(btn.dataset.id);
+
+
+                    const tieneTorneo =
+                        torneoActual &&
+                        grupos.some(g =>
+                            g.parejas.some(p =>
+                                p.id === id
+                            )
+                        );
+
+
+                    if (tieneTorneo) {
+
+                        mostrarMensaje(
+                            "No podés eliminar una pareja que ya participa del torneo actual.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    parejas =
+                        parejas.filter(
+                            p => p.id !== id
+                        );
+
+
+                    guardarParejas();
+
+                    mostrarParejas();
+
+                    actualizarContador();
+
+                });
+
+            });
+    }
+
+
+    function guardarParejas() {
+
+        localStorage.setItem(
+            "parejasClubDeportivo",
+            JSON.stringify(parejas)
+        );
+    }
+
+    // ========================================================
+    // CONTADOR
+    // ========================================================
+
+    function actualizarContador() {
+
+        const categoria =
+            categoriaTorneoInput?.value || "";
+
+        const cantidad =
+            Number(cantidadParejasInput?.value) || 0;
+
+        const cantidadActual =
+            obtenerParejasCategoria(categoria).length;
+
+
+        if (contadorParejas) {
+
+            contadorParejas.textContent =
+                `${cantidadActual} / ${cantidad}`;
+
+        }
+
+
+        if (progresoParejas) {
+
+            const porcentaje =
+                cantidad > 0
+                    ? Math.min(
+                        100,
+                        (cantidadActual / cantidad) * 100
+                    )
+                    : 0;
+
+            progresoParejas.style.width =
+                `${porcentaje}%`;
+
+        }
+    }
+
+    // ========================================================
+    // MODALIDADES
+    // ========================================================
+
+    function actualizarDescripcionModalidad() {
+
+        if (!descripcionTipoTorneo) return;
+
+        const modalidad =
+            tipoTorneoInput?.value;
+
+
+        const textos = {
+
+            "9_games": `
+                <strong>🎾 Partido a 9 games</strong>
+                <p>
+                    Gana la pareja que llegue primero a 9 games.
+                    Ejemplo válido: 9-7, 9-4 o 9-0.
+                    Un resultado 8-7 todavía NO termina el partido.
+                </p>
+            `,
+
+            "2_sets_supertiebreak": `
+                <strong>🎾 2 sets + Super Tie-Break</strong>
+                <p>
+                    Se juegan hasta 2 sets. Si quedan 1-1,
+                    se define mediante Super Tie-Break.
+                </p>
+            `,
+
+            "partido_completo": `
+                <strong>🎾 Partido completo</strong>
+                <p>
+                    Se juegan hasta 3 sets. Gana la pareja
+                    que consiga 2 sets.
+                </p>
+            `
+
+        };
+
+
+        descripcionTipoTorneo.innerHTML =
+            textos[modalidad] ||
+            "Seleccioná una modalidad para conocer cómo se jugarán los partidos.";
+    }
+
+    // ========================================================
+    // CONFIGURACION DE ZONAS
+    // ========================================================
+
+    function actualizarConfiguracionZonas() {
+
+        if (!contenedorConfiguracionZonas) return;
+
+
+        const cantidadParejas =
+            Number(cantidadParejasInput?.value) || 0;
+
+        const cantidadZonas =
+            Number(cantidadGruposInput?.value) || 0;
+
+
+        contenedorConfiguracionZonas.innerHTML = "";
+
+
+        if (!cantidadZonas) {
+
+            contenedorConfiguracionZonas.innerHTML = `
+                <div class="sin-parejas">
+                    Ingresá primero la cantidad de zonas.
+                </div>
+            `;
+
+            if (resumenDistribucion) {
+                resumenDistribucion.textContent =
+                    `0 / ${cantidadParejas} parejas`;
+            }
+
+            return;
+        }
+
+
+        if (cantidadZonas > cantidadParejas) {
+
+            contenedorConfiguracionZonas.innerHTML = `
+                <div class="sin-parejas">
+                    ⚠️ La cantidad de zonas no puede ser mayor que la cantidad de parejas.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        const base =
+            Math.floor(cantidadParejas / cantidadZonas);
+
+        const resto =
+            cantidadParejas % cantidadZonas;
+
+
+        let total = 0;
+
+
+        for (let i = 0; i < cantidadZonas; i++) {
+
+            const cantidadZona =
+                base + (i < resto ? 1 : 0);
+
+
+            total += cantidadZona;
+
+
+            const div =
+                document.createElement("div");
+
+            div.className =
+                "configuracion-zona-item";
+
+
+            div.innerHTML = `
+
+                <div>
+
+                    <strong>
+                        Zona ${String.fromCharCode(65 + i)}
+                    </strong>
+
+                    <span>
+                        ${cantidadZona} parejas
+                    </span>
+
+                </div>
+
+                <div class="zona-distribucion">
+                    ${crearCirculosParejas(cantidadZona)}
+                </div>
+
+            `;
+
+
+            contenedorConfiguracionZonas.appendChild(div);
+        }
+
+
+        if (resumenDistribucion) {
+
+            resumenDistribucion.textContent =
+                `${total} / ${cantidadParejas} parejas`;
+
+        }
+    }
+
+
+    function crearCirculosParejas(cantidad) {
+
+        let html = "";
+
+        for (let i = 0; i < cantidad; i++) {
+            html += `<span class="circulo-pareja">${i + 1}</span>`;
+        }
+
+        return html;
+    }
+
+    // ========================================================
+    // RESUMEN
+    // ========================================================
+
+    function actualizarResumen() {
+
+        const nombre =
+            nombreTorneoInput?.value.trim() || "-";
+
+        const categoria =
+            categoriaTorneoInput?.value || "";
+
+        const modalidad =
+            tipoTorneoInput?.value || "";
+
+        const cantidad =
+            Number(cantidadParejasInput?.value) || 0;
+
+        const zonas =
+            Number(cantidadGruposInput?.value) || 0;
+
+        const clasificados =
+            Number(clasificadosInput?.value) || 0;
+
+        const terceros =
+            Number(mejoresTercerosInput?.value) || 0;
+
+
+        if (resumenNombreTorneo) {
+            resumenNombreTorneo.textContent = nombre;
+        }
+
+
+        if (resumenCategoria) {
+
+            resumenCategoria.textContent =
+                nombreCategoria(categoria);
+
+        }
+
+
+        if (resumenFormato) {
+
+            resumenFormato.textContent =
+                nombreModalidad(modalidad);
+
+        }
+
+
+        if (resumenParejas) {
+
+            const cantidadActual =
+                obtenerParejasCategoria(categoria).length;
+
+            resumenParejas.textContent =
+                `${cantidadActual} / ${cantidad} parejas`;
+
+        }
+
+
+        if (resumenZonas) {
+
+            resumenZonas.textContent =
+                zonas
+                    ? `${zonas} zonas`
+                    : "-";
+
+        }
+
+
+        if (resumenClasificados) {
+
+            resumenClasificados.textContent =
+                clasificados || "-";
+
+        }
+
+
+        if (resumenTerceros) {
+
+            resumenTerceros.textContent =
+                terceros;
+
+        }
+    }
+
+
+    function nombreModalidad(modalidad) {
+
+        const nombres = {
+
+            "9_games":
+                "Partido a 9 games",
+
+            "2_sets_supertiebreak":
+                "2 sets + Super Tie-Break",
+
+            "partido_completo":
+                "Partido completo - 3er set"
+
+        };
+
+        return nombres[modalidad] || "-";
+    }
+
+    // ========================================================
+    // CARGAR CANCHAS
+    // ========================================================
 
     async function cargarCanchas() {
 
         try {
 
             const respuesta =
-                await fetch("http://localhost:3000/api/canchas");
+                await fetch(
+                    "http://localhost:3000/api/canchas"
+                );
 
 
             if (!respuesta.ok) {
-
                 throw new Error(
-                    "No se pudieron cargar las canchas"
+                    "No se pudieron cargar las canchas."
                 );
-
             }
 
 
@@ -298,1836 +1291,489 @@ document.addEventListener("DOMContentLoaded", () => {
                 error
             );
 
-
             canchas = [];
 
         }
-
     }
 
-
-    // =====================================================
-    // CONFIGURAR ZONAS PERSONALIZADAS
-    // =====================================================
-
-    function crearConfiguracionZonas(recrear) {
-
-        if (!contenedorConfiguracionZonas || !cantidadGruposInput) {
-            return;
-        }
-
-
-        const nuevaCantidad =
-            parseInt(cantidadGruposInput.value) || 0;
-
-
-        contenedorConfiguracionZonas.innerHTML = "";
-
-
-        if (nuevaCantidad <= 0) {
-
-            zonasPersonalizadas = [];
-
-
-            contenedorConfiguracionZonas.innerHTML = `
-                <div class="sin-parejas">
-                    Ingresá la cantidad de zonas para configurarlas.
-                </div>
-            `;
-
-
-            return;
-
-        }
-
-
-        if (
-            recrear ||
-            zonasPersonalizadas.length !== nuevaCantidad
-        ) {
-
-            const zonasAnteriores =
-                [...zonasPersonalizadas];
-
-
-            zonasPersonalizadas = [];
-
-
-            for (let i = 0; i < nuevaCantidad; i++) {
-
-                const nombreZona =
-                    `Grupo ${letrasGrupos[i] || i + 1}`;
-
-
-                zonasPersonalizadas.push({
-
-                    nombre:
-                        nombreZona,
-
-                    cantidad:
-                        zonasAnteriores[i]?.cantidad || 3
-
-                });
-
-            }
-
-        }
-
-
-        zonasPersonalizadas.forEach((zona, index) => {
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                "zona-config";
-
-
-            div.innerHTML = `
-
-                <label>
-                    ${zona.nombre}
-                </label>
-
-                <select class="select-zona-personalizada" data-index="${index}">
-                    <option value="3" ${zona.cantidad === 3 ? "selected" : ""}>
-                        3 parejas
-                    </option>
-
-                    <option value="4" ${zona.cantidad === 4 ? "selected" : ""}>
-                        4 parejas
-                    </option>
-                </select>
-
-            `;
-
-
-            contenedorConfiguracionZonas.appendChild(div);
-
-        });
-
-
-        document
-            .querySelectorAll(".select-zona-personalizada")
-            .forEach(select => {
-
-                select.addEventListener("change", () => {
-
-                    const index =
-                        parseInt(select.dataset.index);
-
-
-                    zonasPersonalizadas[index].cantidad =
-                        parseInt(select.value);
-
-
-                    actualizarResumen();
-
-                    guardarDatos();
-
-                });
-
-            });
-
-    }
-
-
-    function obtenerTotalParejasZonas() {
-
-        return zonasPersonalizadas.reduce(
-            (total, zona) => total + zona.cantidad,
-            0
-        );
-
-    }
-
-
-    function validarZonasPersonalizadas() {
-
-        if (!zonasPersonalizadas || zonasPersonalizadas.length === 0) {
-
-            alert("Primero configurá las zonas del torneo.");
-
-            return false;
-
-        }
-
-
-        const totalZonas =
-            obtenerTotalParejasZonas();
-
-
-        if (totalZonas !== cantidadParejas) {
-
-            alert(
-                `La suma de parejas por zona no coincide con el total del torneo.\n\nTotal de parejas del torneo: ${cantidadParejas}\nParejas asignadas en zonas: ${totalZonas}`
-            );
-
-            return false;
-
-        }
-
-
-        return true;
-
-    }
-
-
-    // =====================================================
-    // RESUMEN
-    // =====================================================
-
-    function actualizarResumen() {
-
-        const cantidadActual =
-            parseInt(cantidadParejasInput?.value) || 0;
-
-        const gruposActuales =
-            parseInt(cantidadGruposInput?.value) || 0;
-
-        const clasificadosActuales =
-            parseInt(clasificadosPorGrupoInput?.value) || 0;
-
-        const formatoActual =
-            formatoTorneoInput?.value || "9_games";
-
-        const categoriaActual =
-            categoriaTorneoInput?.value || "";
-
-
-        if (resumenCategoria) {
-
-            resumenCategoria.textContent =
-                obtenerNombreCategoria(categoriaActual);
-
-        }
-
-
-        if (resumenFormato) {
-
-            resumenFormato.textContent =
-                obtenerNombreFormato(formatoActual);
-
-        }
-
-
-        if (resumenParejas) {
-
-            const parejasCategoria =
-                obtenerParejasPorCategoria(categoriaActual);
-
-
-            if (categoriaActual) {
-
-                resumenParejas.textContent =
-                    `${parejasCategoria.length} cargadas / ${cantidadActual || 0} necesarias`;
-
-            } else {
-
-                resumenParejas.textContent =
-                    cantidadActual || "-";
-
-            }
-
-        }
-
-
-        if (resumenZonas) {
-
-            const totalAsignado =
-                obtenerTotalParejasZonas();
-
-
-            if (gruposActuales > 0) {
-
-                resumenZonas.textContent =
-                    `${gruposActuales} zonas / ${totalAsignado} parejas asignadas`;
-
-            } else {
-
-                resumenZonas.textContent =
-                    "-";
-
-            }
-
-        }
-
-
-        if (resumenClasificados) {
-
-            resumenClasificados.textContent =
-                clasificadosActuales || "-";
-
-        }
-
-    }
-
-
-    // =====================================================
-    // AGREGAR PAREJA
-    // =====================================================
-
-    if (btnAgregarPareja) {
-
-        btnAgregarPareja.addEventListener("click", () => {
-
-            const categoriaPareja =
-                categoriaParejaInput?.value || "";
-
-
-            if (!categoriaPareja) {
-
-                alert(
-                    "Seleccioná la categoría de la pareja."
-                );
-
-                return;
-
-            }
-
-
-            const jugador1NombreCompleto =
-                document.getElementById("jugador1NombreCompleto");
-
-            const jugador2NombreCompleto =
-                document.getElementById("jugador2NombreCompleto");
-
-
-            const jugador1Nombre =
-                document.getElementById("jugador1Nombre");
-
-            const jugador1Apellido =
-                document.getElementById("jugador1Apellido");
-
-            const jugador2Nombre =
-                document.getElementById("jugador2Nombre");
-
-            const jugador2Apellido =
-                document.getElementById("jugador2Apellido");
-
-
-            let nombreCompleto1 = "";
-
-            let nombreCompleto2 = "";
-
-
-            if (
-                jugador1NombreCompleto &&
-                jugador2NombreCompleto
-            ) {
-
-                nombreCompleto1 =
-                    jugador1NombreCompleto.value.trim();
-
-                nombreCompleto2 =
-                    jugador2NombreCompleto.value.trim();
-
-            } else {
-
-                if (
-                    !jugador1Nombre ||
-                    !jugador1Apellido ||
-                    !jugador2Nombre ||
-                    !jugador2Apellido
-                ) {
-
-                    alert(
-                        "No se encontraron los campos de los jugadores."
-                    );
-
-                    return;
-
-                }
-
-
-                nombreCompleto1 =
-                    `${jugador1Nombre.value.trim()} ${jugador1Apellido.value.trim()}`.trim();
-
-                nombreCompleto2 =
-                    `${jugador2Nombre.value.trim()} ${jugador2Apellido.value.trim()}`.trim();
-
-            }
-
-
-            if (
-                !nombreCompleto1 ||
-                !nombreCompleto2
-            ) {
-
-                alert(
-                    "Completá nombre y apellido de los dos jugadores."
-                );
-
-                return;
-
-            }
-
-
-            const pareja = {
-
-                id:
-                    Date.now(),
-
-                jugador1:
-                    nombreCompleto1,
-
-                jugador2:
-                    nombreCompleto2,
-
-                nombre:
-                    `${nombreCompleto1} / ${nombreCompleto2}`,
-
-                categoria:
-                    categoriaPareja,
-
-                grupo:
-                    null,
-
-                posicion:
-                    null,
-
-                ordenZona:
-                    null,
-
-                puntos:
-                    0,
-
-                partidosJugados:
-                    0,
-
-                diferenciaGames:
-                    0
-
-            };
-
-
-            parejas.push(pareja);
-
-
-            if (
-                jugador1NombreCompleto &&
-                jugador2NombreCompleto
-            ) {
-
-                jugador1NombreCompleto.value = "";
-                jugador2NombreCompleto.value = "";
-
-            } else {
-
-                jugador1Nombre.value = "";
-                jugador1Apellido.value = "";
-                jugador2Nombre.value = "";
-                jugador2Apellido.value = "";
-
-            }
-
-
-            guardarParejasGlobales();
-
-            mostrarParejas();
-
-            actualizarContador();
-
-            actualizarResumen();
-
-            guardarDatos();
-
-        });
-
-    }
-
-
-    // =====================================================
-    // MOSTRAR PAREJAS FILTRADAS POR CATEGORÍA
-    // =====================================================
-
-    function mostrarParejas() {
-
-        if (!listaParejas) {
-            return;
-        }
-
-
-        listaParejas.innerHTML = "";
-
-
-        let parejasParaMostrar =
-            [...parejas];
-
-
-        const categoriaSeleccionada =
-            categoriaParejaInput?.value || "";
-
-
-        if (categoriaSeleccionada) {
-
-            parejasParaMostrar =
-                parejas.filter(
-                    pareja =>
-                        pareja.categoria === categoriaSeleccionada
-                );
-
-        }
-
-
-        if (parejasParaMostrar.length === 0) {
-
-            if (categoriaSeleccionada) {
-
-                listaParejas.innerHTML = `
-                    <div class="sin-parejas">
-                        Todavía no hay parejas cargadas en ${obtenerNombreCategoria(categoriaSeleccionada)}.
-                    </div>
-                `;
-
-            } else {
-
-                listaParejas.innerHTML = `
-                    <div class="sin-parejas">
-                        Seleccioná una categoría para ver las parejas inscriptas.
-                    </div>
-                `;
-
-            }
-
-            return;
-
-        }
-
-
-        parejasParaMostrar.forEach((pareja, index) => {
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                "pareja-cargada";
-
-
-            div.innerHTML = `
-
-                <div>
-                    <strong>
-                        Pareja ${index + 1}
-                    </strong>
-
-                    <span>
-                        ${pareja.nombre}
-                    </span>
-
-                    <small class="categoria-pareja">
-                        ${obtenerNombreCategoria(pareja.categoria)}
-                    </small>
-                </div>
-
-                <button
-                    class="btn-eliminar-pareja"
-                    data-id="${pareja.id}"
-                    type="button"
-                >
-                    🗑️
-                </button>
-
-            `;
-
-
-            listaParejas.appendChild(div);
-
-        });
-
-
-        document
-            .querySelectorAll(".btn-eliminar-pareja")
-            .forEach(btn => {
-
-                btn.addEventListener(
-                    "click",
-                    () => {
-
-                        const id =
-                            Number(
-                                btn.dataset.id
-                            );
-
-
-                        parejas =
-                            parejas.filter(
-                                p => p.id !== id
-                            );
-
-
-                        guardarParejasGlobales();
-
-                        mostrarParejas();
-
-                        actualizarContador();
-
-                        actualizarResumen();
-
-                        guardarDatos();
-
-                    }
-                );
-
-            });
-
-    }
-
-
-    // =====================================================
-    // CONTADOR
-    // =====================================================
-
-    function actualizarContador() {
-
-        if (!contadorParejas) {
-            return;
-        }
-
-
-        const max =
-            cantidadParejasInput?.value || 0;
-
-
-        const categoriaActual =
-            categoriaTorneoInput?.value || "";
-
-
-        if (categoriaActual) {
-
-            const parejasCategoria =
-                obtenerParejasPorCategoria(categoriaActual);
-
-
-            contadorParejas.textContent =
-                `${parejasCategoria.length} / ${max}`;
-
-        } else {
-
-            contadorParejas.textContent =
-                `${parejas.length} cargadas`;
-
-        }
-
-    }
-
-
-    // =====================================================
+    // ========================================================
     // GENERAR TORNEO
-    // =====================================================
-
-    if (btnGenerar) {
-
-        btnGenerar.addEventListener(
-            "click",
-            generarTorneo
-        );
-
-    }
-
+    // ========================================================
 
     function generarTorneo() {
 
-        cantidadParejas =
-            parseInt(
-                cantidadParejasInput?.value
-            );
+        if (!validarDatosTorneo()) return;
 
+        if (!validarParejas()) return;
 
-        cantidadGrupos =
-            parseInt(
-                cantidadGruposInput?.value
-            ) || 0;
+        if (!validarZonas()) return;
 
 
-        parejasPorGrupo =
-            parseInt(
-                parejasPorGrupoInput?.value
-            ) || 4;
+        const nombre =
+            nombreTorneoInput.value.trim();
 
+        const categoria =
+            categoriaTorneoInput.value;
 
-        clasificadosPorGrupo =
-            parseInt(
-                clasificadosPorGrupoInput?.value
-            ) || 2;
+        const modalidad =
+            tipoTorneoInput.value;
 
+        const cantidad =
+            Number(cantidadParejasInput.value);
 
-        mejoresTerceros =
-            parseInt(
-                mejoresTercerosInput?.value
-            ) || 0;
+        const zonasCantidad =
+            Number(cantidadGruposInput.value);
 
+        const clasificados =
+            Number(clasificadosInput.value);
 
-        formatoTorneo =
-            formatoTorneoInput?.value ||
-            "9_games";
+        const mejoresTerceros =
+            Number(mejoresTercerosInput.value) || 0;
 
 
-        categoriaTorneo =
-            categoriaTorneoInput?.value ||
-            "";
+        const parejasCategoria =
+            obtenerParejasCategoria(categoria);
 
 
-        if (!categoriaTorneo) {
+        // -----------------------------------------
+        // NUEVO TORNEO
+        // -----------------------------------------
 
-            alert(
-                "Seleccioná la categoría del torneo."
-            );
+        const idTorneo =
+            `torneo_${Date.now()}`;
 
-            return;
 
-        }
+        torneoActual = {
 
+            id: idTorneo,
 
-        if (!cantidadParejas || cantidadParejas < 2) {
+            nombre,
 
-            alert(
-                "Ingresá la cantidad de parejas."
-            );
+            categoria,
 
-            return;
+            modalidad,
 
-        }
+            cantidadParejas: cantidad,
 
+            cantidadZonas: zonasCantidad,
 
-        parejasTorneoActual =
-            obtenerParejasPorCategoria(
-                categoriaTorneo
-            );
+            clasificadosPorZona: clasificados,
 
+            mejoresTerceros,
 
-        if (
-            parejasTorneoActual.length !== cantidadParejas
-        ) {
+            creado:
+                new Date().toISOString(),
 
-            alert(
-                `Para ${obtenerNombreCategoria(categoriaTorneo)} tenés que cargar exactamente ${cantidadParejas} parejas.\nActualmente hay ${parejasTorneoActual.length} parejas cargadas en esa categoría.`
-            );
+            estado: "fase_grupos"
 
-            return;
+        };
 
-        }
 
-
-        if (!cantidadGrupos || cantidadGrupos < 1) {
-
-            alert(
-                "Ingresá la cantidad de zonas."
-            );
-
-            return;
-
-        }
-
-
-        if (
-            clasificadosPorGrupo < 1
-        ) {
-
-            alert(
-                "La cantidad de clasificados por zona no es válida."
-            );
-
-            return;
-
-        }
-
-
-        if (
-            mejoresTerceros < 0
-        ) {
-
-            alert(
-                "La cantidad de mejores terceros no puede ser negativa."
-            );
-
-            return;
-
-        }
-
-
-        if (!validarZonasPersonalizadas()) {
-            return;
-        }
-
-
-        grupos = [];
-
-        partidos = [];
-
-
-        parejasTorneoActual.forEach(pareja => {
-
-            pareja.grupo =
-                null;
-
-            pareja.posicion =
-                null;
-
-            pareja.ordenZona =
-                null;
-
-            pareja.puntos =
-                0;
-
-            pareja.partidosJugados =
-                0;
-
-            pareja.diferenciaGames =
-                0;
-
-        });
-
-
-        const nombreFormato =
-            obtenerNombreFormato(
-                formatoTorneo
-            );
-
-
-        const nombreCategoria =
-            obtenerNombreCategoria(
-                categoriaTorneo
-            );
-
-
-        if (mensaje) {
-
-            mensaje.innerHTML = `
-                <strong>Torneo:</strong>
-                ${nombreCategoria} - ${nombreFormato}
-            `;
-
-        }
-
-
-        if (nombreFormatoTorneo) {
-
-            nombreFormatoTorneo.textContent =
-                `${nombreCategoria} - ${nombreFormato}`;
-
-        }
-
-
-        crearGrupos();
-
-        mostrarZonas();
-
-
-        if (informacionTorneo) {
-
-            informacionTorneo.classList.remove(
-                "oculto"
-            );
-
-        }
-
-
-        if (seccionEliminacion) {
-
-            seccionEliminacion.classList.remove(
-                "oculto"
-            );
-
-        }
-
-
-        if (totalParejas) {
-
-            totalParejas.textContent =
-                cantidadParejas;
-
-        }
-
-
-        if (totalGrupos) {
-
-            totalGrupos.textContent =
-                grupos.length;
-
-        }
-
-
-        torneoGenerado =
-            true;
-
-
-        actualizarResumen();
-
-        guardarDatos();
-
-
-        if (contenedorZonas) {
-
-            contenedorZonas.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    }
-
-
-    // =====================================================
-    // CREAR GRUPOS
-    // =====================================================
-
-    function crearGrupos() {
-
-        grupos = [];
-
-
-        const baseParejas =
-            parejasTorneoActual.length > 0
-                ? parejasTorneoActual
-                : obtenerParejasPorCategoria(categoriaTorneo);
-
+        // -----------------------------------------
+        // MEZCLAR PAREJAS
+        // -----------------------------------------
 
         const mezcladas =
-            mezclarArray(
-                [...baseParejas]
+            [...parejasCategoria]
+                .sort(
+                    () => Math.random() - 0.5
+                )
+                .slice(0, cantidad);
+
+
+        // -----------------------------------------
+        // CREAR ZONAS
+        // -----------------------------------------
+
+        grupos = [];
+
+
+        const base =
+            Math.floor(
+                cantidad / zonasCantidad
             );
 
+        const resto =
+            cantidad % zonasCantidad;
 
-        let indice = 0;
+
+        let indicePareja = 0;
 
 
-        zonasPersonalizadas.forEach((zonaConfig, numeroGrupo) => {
+        for (
+            let i = 0;
+            i < zonasCantidad;
+            i++
+        ) {
+
+            const cantidadZona =
+                base +
+                (i < resto ? 1 : 0);
+
 
             const grupo = {
 
-                id:
-                    numeroGrupo,
+                id: i,
 
                 nombre:
-                    zonaConfig.nombre,
+                    `Zona ${String.fromCharCode(65 + i)}`,
 
-                parejas:
-                    [],
-
-                clasificados:
-                    [],
-
-                tipoZona:
-                    zonaConfig.cantidad === 4
-                        ? "zona_4"
-                        : "zona_3"
+                parejas: []
 
             };
 
 
             for (
-                let i = 0;
-                i < zonaConfig.cantidad;
-                i++
+                let j = 0;
+                j < cantidadZona;
+                j++
             ) {
 
                 const pareja =
-                    mezcladas[indice];
-
-
-                if (!pareja) {
-                    break;
-                }
+                    mezcladas[indicePareja++];
 
 
                 pareja.grupo =
                     grupo.nombre;
 
-
-                pareja.posicion =
-                    i + 1;
-
-
-                pareja.ordenZona =
-                    i + 1;
+                pareja.puntos = 0;
+                pareja.pj = 0;
+                pareja.dg = 0;
 
 
-                pareja.puntos =
-                    0;
-
-
-                pareja.partidosJugados =
-                    0;
-
-
-                pareja.diferenciaGames =
-                    0;
-
-
-                grupo.parejas.push(
-                    pareja
-                );
-
-
-                indice++;
-
+                grupo.parejas.push(pareja);
             }
 
 
-            grupos.push(
-                grupo
-            );
+            grupos.push(grupo);
+        }
 
-        });
 
+        // -----------------------------------------
+        // GENERAR PARTIDOS
+        // -----------------------------------------
+
+        generarPartidosZona();
+
+
+        // -----------------------------------------
+        // GUARDAR
+        // -----------------------------------------
+
+        guardarTorneoActual();
+
+
+        // -----------------------------------------
+        // MOSTRAR
+        // -----------------------------------------
+
+        mostrarTorneoGenerado();
+
+
+        mostrarMensaje(
+            "¡Torneo generado correctamente!",
+            "success"
+        );
+
+
+        document
+            .getElementById("informacionTorneo")
+            ?.scrollIntoView({
+                behavior: "smooth"
+            });
     }
 
+    // ========================================================
+    // PARTIDOS DE ZONA
+    // ========================================================
 
-    // =====================================================
+    function generarPartidosZona() {
+
+        partidos = [];
+
+
+        grupos.forEach(grupo => {
+
+            for (
+                let i = 0;
+                i < grupo.parejas.length;
+                i++
+            ) {
+
+                for (
+                    let j = i + 1;
+                    j < grupo.parejas.length;
+                    j++
+                ) {
+
+                    partidos.push({
+
+                        id:
+                            `grupo_${grupo.id}_${grupo.parejas[i].id}_${grupo.parejas[j].id}`,
+
+                        fase: "grupos",
+
+                        grupoId: grupo.id,
+
+                        parejaA:
+                            grupo.parejas[i].id,
+
+                        parejaB:
+                            grupo.parejas[j].id,
+
+                        cancha: null,
+
+                        resultado: null,
+
+                        ganador: null
+
+                    });
+
+                }
+            }
+        });
+    }
+
+    // ========================================================
+    // MOSTRAR TORNEO GENERADO
+    // ========================================================
+
+    function mostrarTorneoGenerado() {
+
+        if (informacionTorneo) {
+            informacionTorneo.classList.remove("oculto");
+        }
+
+        if (seccionResultados) {
+            seccionResultados.classList.remove("oculto");
+        }
+
+        if (seccionTablas) {
+            seccionTablas.classList.remove("oculto");
+        }
+
+        if (seccionClasificados) {
+            seccionClasificados.classList.remove("oculto");
+        }
+
+        if (seccionEliminacion) {
+            seccionEliminacion.classList.remove("oculto");
+        }
+
+
+        mostrarZonas();
+
+        mostrarPartidos();
+
+        actualizarTablas();
+
+        mostrarClasificados();
+
+        mostrarEliminacion();
+
+        actualizarEstadisticas();
+    }
+
+    // ========================================================
     // MOSTRAR ZONAS
-    // =====================================================
+    // ========================================================
 
     function mostrarZonas() {
 
-        if (!contenedorZonas) {
-            return;
-        }
-
+        if (!contenedorZonas) return;
 
         contenedorZonas.innerHTML = "";
 
 
-        grupos.forEach(
-            grupo => {
+        grupos.forEach(grupo => {
 
-                const zona =
-                    document.createElement(
-                        "div"
-                    );
+            ordenarGrupo(grupo);
 
 
-                zona.className =
-                    "zona";
+            const zona =
+                document.createElement("div");
+
+            zona.className = "zona";
 
 
-                let html = `
+            zona.innerHTML = `
 
-                    <div class="zona-header">
+                <div class="zona-header">
 
-                        <div>
+                    <div>
 
-                            <span>
-                                ZONA
-                            </span>
+                        <span>ZONA</span>
 
-                            <h2>
-                                ${grupo.nombre}
-                            </h2>
+                        <h2>
+                            ${grupo.nombre}
+                        </h2>
 
-                            <small>
-                                ${grupo.tipoZona === "zona_4"
-                                    ? "Zona de 4 parejas"
-                                    : "Zona de 3 parejas"}
-                            </small>
-
-                        </div>
-
-                        <div class="clasifican">
-                            Clasifican
-                            ${clasificadosPorGrupo}
-                        </div>
+                        <small>
+                            ${grupo.parejas.length} parejas
+                        </small>
 
                     </div>
 
-                    <div class="tabla-zona">
+                    <div class="clasifican">
+                        Clasifican
+                        ${torneoActual?.clasificadosPorZona || 0}
+                    </div>
 
-                        <div class="fila encabezado">
+                </div>
+
+                <div class="tabla-zona">
+
+                    <div class="fila encabezado">
+
+                        <span>#</span>
+                        <span>Pareja</span>
+                        <span>PJ</span>
+                        <span>PTS</span>
+                        <span>DG</span>
+
+                    </div>
+
+                    ${grupo.parejas.map((pareja, index) => `
+
+                        <div class="fila">
 
                             <span>
-                                #
+                                ${index + 1}
                             </span>
 
                             <span>
-                                Pareja
+                                ${escapeHTML(pareja.nombre)}
                             </span>
 
                             <span>
-                                PJ
+                                ${pareja.pj || 0}
                             </span>
 
                             <span>
-                                PTS
+                                ${pareja.puntos || 0}
                             </span>
 
                             <span>
-                                DG
+                                ${pareja.dg || 0}
                             </span>
 
                         </div>
 
-                `;
+                    `).join("")}
 
+                </div>
 
-                grupo.parejas.forEach(
-                    (pareja, index) => {
-
-                        html += `
-
-                            <div
-                                class="fila"
-                                data-pareja="${pareja.id}"
-                            >
-
-                                <span>
-                                    ${index + 1}
-                                </span>
-
-                                <span>
-                                    ${pareja.nombre}
-                                </span>
-
-                                <span>
-                                    ${pareja.partidosJugados || 0}
-                                </span>
-
-                                <span>
-                                    ${pareja.puntos || 0}
-                                </span>
-
-                                <span>
-                                    ${pareja.diferenciaGames || 0}
-                                </span>
-
-                            </div>
-
-                        `;
-
-                    }
-                );
-
-
-                html += `
-                    </div>
-
-                    <div class="partidos-zona">
-
-                        <h3>
-                            Partidos
-                        </h3>
-
-                        <div
-                            id="partidos-${grupo.id}"
-                        >
-                        </div>
-
-                    </div>
-                `;
-
-
-                zona.innerHTML =
-                    html;
-
-
-                contenedorZonas.appendChild(
-                    zona
-                );
-
-
-                generarPartidosZona(
-                    grupo
-                );
-
-            }
-        );
-
-    }
-
-
-    // =====================================================
-    // GENERAR PARTIDOS DE GRUPO
-    // =====================================================
-
-    function generarPartidosZona(
-        grupo
-    ) {
-
-        const contenedor =
-            document.getElementById(
-                `partidos-${grupo.id}`
-            );
-
-
-        if (!contenedor) {
-            return;
-        }
-
-
-        contenedor.innerHTML = "";
-
-
-        if (grupo.parejas.length === 3) {
-
-            generarTodosContraTodosZona(
-                grupo,
-                contenedor
-            );
-
-            return;
-
-        }
-
-
-        if (grupo.parejas.length === 4) {
-
-            generarZonaDeCuatro(
-                grupo,
-                contenedor
-            );
-
-            return;
-
-        }
-
-
-        contenedor.innerHTML = `
-            <div class="sin-parejas">
-                Esta zona debe tener 3 o 4 parejas.
-            </div>
-        `;
-
-    }
-
-
-    // =====================================================
-    // ID ÚNICO PARA PARTIDOS DE GRUPO
-    // =====================================================
-
-    function crearIdPartidoGrupo(
-        grupoId,
-        parejaAId,
-        parejaBId
-    ) {
-
-        const ids =
-            [
-                parejaAId,
-                parejaBId
-            ].sort(
-                (a, b) => a - b
-            );
-
-
-        return `grupo-${grupoId}-${ids[0]}-${ids[1]}`;
-
-    }
-
-
-    // =====================================================
-    // ZONA DE 3 - TODOS CONTRA TODOS
-    // =====================================================
-
-    function generarTodosContraTodosZona(
-        grupo,
-        contenedor
-    ) {
-
-        const parejasOrdenadas =
-            [...grupo.parejas].sort(
-                (a, b) =>
-                    (a.ordenZona || a.posicion) -
-                    (b.ordenZona || b.posicion)
-            );
-
-
-        for (
-            let i = 0;
-            i < parejasOrdenadas.length;
-            i++
-        ) {
-
-            for (
-                let j = i + 1;
-                j < parejasOrdenadas.length;
-                j++
-            ) {
-
-                const parejaA =
-                    parejasOrdenadas[i];
-
-                const parejaB =
-                    parejasOrdenadas[j];
-
-
-                const partido = {
-
-                    id:
-                        crearIdPartidoGrupo(
-                            grupo.id,
-                            parejaA.id,
-                            parejaB.id
-                        ),
-
-                    fase:
-                        "grupos",
-
-                    grupo:
-                        grupo.id,
-
-                    parejaA:
-                        parejaA.id,
-
-                    parejaB:
-                        parejaB.id,
-
-                    id_cancha:
-                        null,
-
-                    resultado:
-                        null,
-
-                    ganador:
-                        null
-
-                };
-
-
-                let partidoGuardado =
-                    partidos.find(
-                        p =>
-                            p.id === partido.id
-                    );
-
-
-                if (!partidoGuardado) {
-
-                    partidos.push(
-                        partido
-                    );
-
-                    partidoGuardado =
-                        partido;
-
-                }
-
-
-                const div =
-                    crearPartidoHTML(
-                        partidoGuardado,
-                        parejaA,
-                        parejaB
-                    );
-
-
-                contenedor.appendChild(
-                    div
-                );
-
-            }
-
-        }
-
-    }
-
-
-    // =====================================================
-    // ZONA DE 4 - FORMATO ESPECIAL
-    // =====================================================
-
-    function generarZonaDeCuatro(
-        grupo,
-        contenedor
-    ) {
-
-        const parejasOrdenadas =
-            [...grupo.parejas].sort(
-                (a, b) =>
-                    (a.ordenZona || a.posicion) -
-                    (b.ordenZona || b.posicion)
-            );
-
-
-        const pareja1 =
-            parejasOrdenadas[0];
-
-        const pareja2 =
-            parejasOrdenadas[1];
-
-        const pareja3 =
-            parejasOrdenadas[2];
-
-        const pareja4 =
-            parejasOrdenadas[3];
-
-
-        crearPartidoZona4(
-            grupo,
-            contenedor,
-            `zona4-${grupo.id}-p1`,
-            pareja1,
-            pareja2,
-            "Partido 1"
-        );
-
-
-        crearPartidoZona4(
-            grupo,
-            contenedor,
-            `zona4-${grupo.id}-p2`,
-            pareja3,
-            pareja4,
-            "Partido 2"
-        );
-
-
-        const partido1 =
-            partidos.find(
-                p =>
-                    p.id === `zona4-${grupo.id}-p1`
-            );
-
-
-        const partido2 =
-            partidos.find(
-                p =>
-                    p.id === `zona4-${grupo.id}-p2`
-            );
-
-
-        if (
-            partido1 &&
-            partido2 &&
-            partido1.resultado &&
-            partido2.resultado &&
-            partido1.ganador &&
-            partido2.ganador
-        ) {
-
-            const ganador1 =
-                obtenerPareja(
-                    partido1.ganador
-                );
-
-
-            const perdedor1 =
-                obtenerPareja(
-                    partido1.ganador === partido1.parejaA
-                        ? partido1.parejaB
-                        : partido1.parejaA
-                );
-
-
-            const ganador2 =
-                obtenerPareja(
-                    partido2.ganador
-                );
-
-
-            const perdedor2 =
-                obtenerPareja(
-                    partido2.ganador === partido2.parejaA
-                        ? partido2.parejaB
-                        : partido2.parejaA
-                );
-
-
-            crearPartidoZona4(
-                grupo,
-                contenedor,
-                `zona4-${grupo.id}-p3`,
-                ganador1,
-                perdedor2,
-                "Partido 3 - Ganador P1 vs Perdedor P2"
-            );
-
-
-            crearPartidoZona4(
-                grupo,
-                contenedor,
-                `zona4-${grupo.id}-p4`,
-                ganador2,
-                perdedor1,
-                "Partido 4 - Ganador P2 vs Perdedor P1"
-            );
-
-        } else {
-
-            partidos =
-                partidos.filter(
-                    p =>
-                        p.id !== `zona4-${grupo.id}-p3` &&
-                        p.id !== `zona4-${grupo.id}-p4`
-                );
-
-
-            const aviso =
-                document.createElement(
-                    "div"
-                );
-
-
-            aviso.className =
-                "sin-parejas";
-
-
-            aviso.innerHTML = `
-                Guardá los resultados del Partido 1 y Partido 2
-                para que se generen los partidos 3 y 4.
             `;
 
 
-            contenedor.appendChild(
-                aviso
-            );
+            contenedorZonas.appendChild(zona);
 
-        }
-
+        });
     }
 
+    // ========================================================
+    // MOSTRAR PARTIDOS
+    // ========================================================
 
-    function crearPartidoZona4(
-        grupo,
-        contenedor,
-        partidoId,
-        parejaA,
-        parejaB,
-        tituloPartido
+    function mostrarPartidos() {
+
+        if (!contenedorPartidos) return;
+
+        contenedorPartidos.innerHTML = "";
+
+
+        grupos.forEach(grupo => {
+
+            const titulo =
+                document.createElement("h3");
+
+            titulo.textContent =
+                grupo.nombre;
+
+
+            contenedorPartidos.appendChild(titulo);
+
+
+            const partidosGrupo =
+                partidos.filter(
+                    partido =>
+                        partido.fase === "grupos" &&
+                        partido.grupoId === grupo.id
+                );
+
+
+            partidosGrupo.forEach(partido => {
+
+                crearTarjetaPartido(
+                    partido,
+                    contenedorPartidos
+                );
+
+            });
+
+        });
+    }
+
+    // ========================================================
+    // CREAR TARJETA PARTIDO
+    // ========================================================
+
+    function crearTarjetaPartido(
+        partido,
+        contenedor
     ) {
 
-        if (
-            !parejaA ||
-            !parejaB
-        ) {
+        const parejaA =
+            buscarPareja(partido.parejaA);
+
+        const parejaB =
+            buscarPareja(partido.parejaB);
+
+
+        if (!parejaA || !parejaB) {
             return;
         }
 
 
-        let partido =
-            partidos.find(
-                p =>
-                    p.id === partidoId
-            );
-
-
-        if (!partido) {
-
-            partido = {
-
-                id:
-                    partidoId,
-
-                fase:
-                    "grupos",
-
-                grupo:
-                    grupo.id,
-
-                parejaA:
-                    parejaA.id,
-
-                parejaB:
-                    parejaB.id,
-
-                id_cancha:
-                    null,
-
-                resultado:
-                    null,
-
-                ganador:
-                    null
-
-            };
-
-
-            partidos.push(
-                partido
-            );
-
-        }
-
-
-        if (
-            partido.parejaA !== parejaA.id ||
-            partido.parejaB !== parejaB.id
-        ) {
-
-            partido.parejaA =
-                parejaA.id;
-
-            partido.parejaB =
-                parejaB.id;
-
-            partido.id_cancha =
-                null;
-
-            partido.resultado =
-                null;
-
-            partido.ganador =
-                null;
-
-        }
-
-
-        const titulo =
-            document.createElement(
-                "div"
-            );
-
-
-        titulo.className =
-            "partido-numero";
-
-
-        titulo.textContent =
-            tituloPartido;
-
-
-        contenedor.appendChild(
-            titulo
-        );
-
-
         const div =
-            crearPartidoHTML(
-                partido,
-                parejaA,
-                parejaB
-            );
-
-
-        contenedor.appendChild(
-            div
-        );
-
-    }
-
-
-    // =====================================================
-    // CREAR HTML PARTIDO CON CANCHA AL LADO
-    // =====================================================
-
-    function crearPartidoHTML(
-        partido,
-        parejaA,
-        parejaB
-    ) {
-
-        const div =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         div.className =
             "partido-card";
 
 
-        const guardado =
-            partidos.find(
-                p =>
-                    p.id === partido.id
-            );
-
-
         const resultado =
-            guardado?.resultado;
+            partido.resultado;
 
 
-        const yaJugado =
-            resultado !== null &&
-            resultado !== undefined;
+        const opcionesCanchas =
+            canchas.map(cancha => {
+
+                const idCancha =
+                    cancha.id_cancha ??
+                    cancha.id ??
+                    cancha.idCancha;
+
+                const nombreCancha =
+                    cancha.nombre ??
+                    cancha.nombre_cancha ??
+                    `Cancha ${idCancha}`;
 
 
-        const canchaSeleccionada =
-            guardado?.id_cancha ||
-            partido.id_cancha ||
-            "";
+                return `
 
-
-        let opcionesCanchas = `
-            <option value="">
-                Seleccionar cancha
-            </option>
-        `;
-
-
-        if (canchas.length === 0) {
-
-            opcionesCanchas += `
-                <option value="" disabled>
-                    No hay canchas cargadas
-                </option>
-            `;
-
-        } else {
-
-            canchas.forEach(cancha => {
-
-                opcionesCanchas += `
-                    <option 
-                        value="${cancha.id_cancha}"
-                        ${Number(canchaSeleccionada) === Number(cancha.id_cancha) ? "selected" : ""}
+                    <option
+                        value="${idCancha}"
+                        ${Number(partido.cancha) === Number(idCancha)
+                            ? "selected"
+                            : ""}
                     >
-                        ${cancha.nombre}
+                        ${escapeHTML(nombreCancha)}
                     </option>
+
                 `;
 
-            });
-
-        }
-
-
-        let htmlResultado = "";
-
-
-        if (formatoTorneo === "9_games") {
-
-            htmlResultado = `
-
-                <div class="resultado-inputs">
-
-                    <input
-                        type="number"
-                        min="0"
-                        class="resultado-a"
-                        placeholder="0"
-                        value="${resultado?.a ?? ""}"
-                        ${yaJugado ? "disabled" : ""}
-                    >
-
-                    <span>
-                        -
-                    </span>
-
-                    <input
-                        type="number"
-                        min="0"
-                        class="resultado-b"
-                        placeholder="0"
-                        value="${resultado?.b ?? ""}"
-                        ${yaJugado ? "disabled" : ""}
-                    >
-
-                    <button
-                        class="btn-guardar-resultado"
-                        type="button"
-                        ${yaJugado ? "disabled" : ""}
-                    >
-                        ${yaJugado ? "Resultado cargado" : "Guardar"}
-                    </button>
-
-                </div>
-
-            `;
-
-        } else {
-
-            htmlResultado = `
-
-                <div class="resultado-sets">
-
-                    <div class="set-input">
-
-                        <span>
-                            Set 1
-                        </span>
-
-                        <input
-                            type="number"
-                            min="0"
-                            class="set1-a"
-                            placeholder="0"
-                            value="${resultado?.sets?.[0]?.a ?? ""}"
-                            ${yaJugado ? "disabled" : ""}
-                        >
-
-                        <strong>
-                            -
-                        </strong>
-
-                        <input
-                            type="number"
-                            min="0"
-                            class="set1-b"
-                            placeholder="0"
-                            value="${resultado?.sets?.[0]?.b ?? ""}"
-                            ${yaJugado ? "disabled" : ""}
-                        >
-
-                    </div>
-
-
-                    <div class="set-input">
-
-                        <span>
-                            Set 2
-                        </span>
-
-                        <input
-                            type="number"
-                            min="0"
-                            class="set2-a"
-                            placeholder="0"
-                            value="${resultado?.sets?.[1]?.a ?? ""}"
-                            ${yaJugado ? "disabled" : ""}
-                        >
-
-                        <strong>
-                            -
-                        </strong>
-
-                        <input
-                            type="number"
-                            min="0"
-                            class="set2-b"
-                            placeholder="0"
-                            value="${resultado?.sets?.[1]?.b ?? ""}"
-                            ${yaJugado ? "disabled" : ""}
-                        >
-
-                    </div>
-
-
-                    <div class="set-input">
-
-                        <span>
-                            ${formatoTorneo === "2_sets_supertiebreak" || formatoTorneo === "2_sets_super"
-                                ? "Super TB"
-                                : "Set 3"}
-                        </span>
-
-                        <input
-                            type="number"
-                            min="0"
-                            class="set3-a"
-                            placeholder="0"
-                            value="${resultado?.sets?.[2]?.a ?? ""}"
-                            ${yaJugado ? "disabled" : ""}
-                        >
-
-                        <strong>
-                            -
-                        </strong>
-
-                        <input
-                            type="number"
-                            min="0"
-                            class="set3-b"
-                            placeholder="0"
-                            value="${resultado?.sets?.[2]?.b ?? ""}"
-                            ${yaJugado ? "disabled" : ""}
-                        >
-
-                    </div>
-
-
-                    <button
-                        class="btn-guardar-resultado"
-                        type="button"
-                        ${yaJugado ? "disabled" : ""}
-                    >
-                        ${yaJugado ? "Resultado cargado" : "Guardar resultado"}
-                    </button>
-
-                </div>
-
-            `;
-
-        }
+            }).join("");
 
 
         div.innerHTML = `
@@ -2137,7 +1783,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="partido-info">
 
                     <span>
-                        ${parejaA.nombre}
+                        ${escapeHTML(parejaA.nombre)}
                     </span>
 
                     <strong>
@@ -2145,7 +1791,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </strong>
 
                     <span>
-                        ${parejaB.nombre}
+                        ${escapeHTML(parejaB.nombre)}
                     </span>
 
                 </div>
@@ -2157,957 +1803,701 @@ document.addEventListener("DOMContentLoaded", () => {
                         Cancha
                     </label>
 
-                    <select class="select-cancha-partido">
+                    <select class="cancha">
+
+                        <option value="">
+                            Seleccionar cancha
+                        </option>
+
                         ${opcionesCanchas}
+
                     </select>
 
                 </div>
 
             </div>
 
-            ${htmlResultado}
+
+            <div class="resultado-inputs">
+
+                <input
+                    type="number"
+                    min="0"
+                    class="resultado-a"
+                    placeholder="0"
+                    value="${resultado?.a ?? ""}"
+                    ${resultado ? "disabled" : ""}
+                >
+
+                <span>
+                    -
+                </span>
+
+                <input
+                    type="number"
+                    min="0"
+                    class="resultado-b"
+                    placeholder="0"
+                    value="${resultado?.b ?? ""}"
+                    ${resultado ? "disabled" : ""}
+                >
+
+                <button
+                    type="button"
+                    class="btn-guardar-resultado"
+                    ${resultado ? "disabled" : ""}
+                >
+                    ${
+                        resultado
+                            ? "Resultado cargado"
+                            : "Guardar"
+                    }
+                </button>
+
+            </div>
 
         `;
 
 
+        // CANCHA
+
         const selectCancha =
-            div.querySelector(".select-cancha-partido");
+            div.querySelector(".cancha");
 
 
-        if (selectCancha) {
+        selectCancha?.addEventListener(
+            "change",
+            () => {
 
-            selectCancha.addEventListener("change", () => {
-
-                partido.id_cancha =
+                partido.cancha =
                     selectCancha.value
                         ? Number(selectCancha.value)
                         : null;
 
 
-                const partidoGuardado =
-                    partidos.find(
-                        p =>
-                            p.id === partido.id
-                    );
+                guardarTorneoActual();
+
+            }
+        );
 
 
-                if (partidoGuardado) {
+        // RESULTADO
 
-                    partidoGuardado.id_cancha =
-                        partido.id_cancha;
-
-                }
-
-
-                guardarDatos();
-
-            });
-
-        }
-
-
-        const btn =
+        const boton =
             div.querySelector(
                 ".btn-guardar-resultado"
             );
 
 
-        if (!btn || yaJugado) {
-            return div;
-        }
-
-
-        btn.addEventListener(
+        boton?.addEventListener(
             "click",
             () => {
 
-                const partidoActual =
-                    partidos.find(
-                        p =>
-                            p.id === partido.id
-                    );
+                const inputA =
+                    div.querySelector(".resultado-a");
+
+                const inputB =
+                    div.querySelector(".resultado-b");
 
 
-                const idCanchaElegida =
-                    partidoActual?.id_cancha ||
-                    partido.id_cancha ||
-                    null;
+                const a =
+                    Number(inputA.value);
+
+                const b =
+                    Number(inputB.value);
 
 
-                if (!idCanchaElegida) {
+                if (!partido.cancha) {
 
-                    alert(
-                        "Seleccioná la cancha donde se juega este partido."
-                    );
-
-                    return;
-
-                }
-
-
-                if (partido.resultado) {
-
-                    alert(
-                        "Este partido ya tiene resultado cargado."
+                    mostrarMensaje(
+                        "Seleccioná una cancha.",
+                        "error"
                     );
 
                     return;
-
                 }
 
 
-                if (formatoTorneo === "9_games") {
+                if (
+                    !Number.isInteger(a) ||
+                    !Number.isInteger(b)
+                ) {
 
-                    const inputA =
-                        div.querySelector(".resultado-a");
-
-                    const inputB =
-                        div.querySelector(".resultado-b");
-
-
-                    const a =
-                        parseInt(inputA.value);
-
-                    const b =
-                        parseInt(inputB.value);
-
-
-                    if (
-                        isNaN(a) ||
-                        isNaN(b)
-                    ) {
-
-                        alert(
-                            "Ingresá ambos resultados."
-                        );
-
-                        return;
-
-                    }
-
-
-                    if (
-                        a < 0 ||
-                        b < 0
-                    ) {
-
-                        alert(
-                            "Los resultados no pueden ser negativos."
-                        );
-
-                        return;
-
-                    }
-
-
-                    if (
-                        a === b
-                    ) {
-
-                        alert(
-                            "El partido no puede terminar empatado."
-                        );
-
-                        return;
-
-                    }
-
-
-                    if (
-                        a < 9 &&
-                        b < 9
-                    ) {
-
-                        alert(
-                            "En partido a 9 games, una pareja debe llegar al menos a 9."
-                        );
-
-                        return;
-
-                    }
-
-
-                    guardarResultado(
-                        partido.id,
-                        {
-                            tipo:
-                                "9_games",
-
-                            a:
-                                a,
-
-                            b:
-                                b
-                        }
+                    mostrarMensaje(
+                        "Ingresá games/sets válidos.",
+                        "error"
                     );
 
                     return;
-
                 }
 
 
-                const set1A =
-                    parseInt(
-                        div.querySelector(".set1-a").value
-                    );
-
-                const set1B =
-                    parseInt(
-                        div.querySelector(".set1-b").value
-                    );
-
-                const set2A =
-                    parseInt(
-                        div.querySelector(".set2-a").value
-                    );
-
-                const set2B =
-                    parseInt(
-                        div.querySelector(".set2-b").value
+                const validacion =
+                    validarResultado(
+                        a,
+                        b,
+                        torneoActual.modalidad
                     );
 
 
-                const set3AInput =
-                    div.querySelector(".set3-a").value;
+                if (!validacion.valido) {
 
-                const set3BInput =
-                    div.querySelector(".set3-b").value;
-
-
-                const set3A =
-                    set3AInput === ""
-                        ? null
-                        : parseInt(set3AInput);
-
-
-                const set3B =
-                    set3BInput === ""
-                        ? null
-                        : parseInt(set3BInput);
-
-
-                const resultadoSets =
-                    validarResultadoSets(
-                        set1A,
-                        set1B,
-                        set2A,
-                        set2B,
-                        set3A,
-                        set3B
-                    );
-
-
-                if (!resultadoSets.valido) {
-
-                    alert(
-                        resultadoSets.mensaje
+                    mostrarMensaje(
+                        validacion.mensaje,
+                        "error"
                     );
 
                     return;
-
                 }
 
 
-                guardarResultado(
-                    partido.id,
-                    resultadoSets.resultado
+                guardarResultadoPartido(
+                    partido,
+                    a,
+                    b
                 );
 
             }
         );
 
 
-        return div;
-
+        contenedor.appendChild(div);
     }
 
+    // ========================================================
+    // VALIDAR RESULTADO
+    // ========================================================
 
-    // =====================================================
-    // GUARDAR RESULTADO
-    // =====================================================
-
-    function guardarResultado(
-        partidoId,
-        resultado
+    function validarResultado(
+        a,
+        b,
+        modalidad
     ) {
 
-        const partido =
-            partidos.find(
-                p =>
-                    p.id === partidoId
-            );
+        // ==============================================
+        // 9 GAMES
+        // ==============================================
 
+        if (modalidad === "9_games") {
 
-        if (!partido) {
+            if (a < 0 || b < 0) {
 
-            console.error(
-                "Partido no encontrado."
-            );
-
-            return;
-
-        }
-
-
-        if (partido.resultado) {
-
-            alert(
-                "Este partido ya tiene resultado cargado."
-            );
-
-            return;
-
-        }
-
-
-        partido.resultado =
-            resultado;
-
-
-        if (
-            resultado.tipo === "9_games"
-        ) {
-
-            partido.ganador =
-                resultado.a > resultado.b
-                    ? partido.parejaA
-                    : partido.parejaB;
-
-        } else {
-
-            partido.ganador =
-                resultado.setsGanadosA > resultado.setsGanadosB
-                    ? partido.parejaA
-                    : partido.parejaB;
-
-        }
-
-
-        if (
-            partido.fase === "grupos"
-        ) {
-
-            actualizarTablaGrupo(
-                partido
-            );
-
-
-            guardarDatos();
-
-
-            mostrarZonas();
-
-
-            generarEliminacion();
-
-        } else {
-
-            guardarDatos();
-
-
-            generarSiguienteRonda(
-                partido.fase
-            );
-
-
-            mostrarRondasEliminacionGuardadas();
-
-        }
-
-
-        alert(
-            "Resultado guardado correctamente."
-        );
-
-    }
-
-
-    // =====================================================
-    // VALIDAR RESULTADO POR SETS
-    // =====================================================
-
-    function validarResultadoSets(
-        set1A,
-        set1B,
-        set2A,
-        set2B,
-        set3A,
-        set3B
-    ) {
-
-        if (
-            isNaN(set1A) ||
-            isNaN(set1B) ||
-            isNaN(set2A) ||
-            isNaN(set2B)
-        ) {
-
-            return {
-                valido:
-                    false,
-
-                mensaje:
-                    "Tenés que cargar el Set 1 y el Set 2."
-            };
-
-        }
-
-
-        if (
-            set1A < 0 ||
-            set1B < 0 ||
-            set2A < 0 ||
-            set2B < 0
-        ) {
-
-            return {
-                valido:
-                    false,
-
-                mensaje:
-                    "Los resultados no pueden ser negativos."
-            };
-
-        }
-
-
-        if (
-            set1A === set1B ||
-            set2A === set2B
-        ) {
-
-            return {
-                valido:
-                    false,
-
-                mensaje:
-                    "Un set no puede terminar empatado."
-            };
-
-        }
-
-
-        let setsGanadosA = 0;
-
-        let setsGanadosB = 0;
-
-
-        if (set1A > set1B) {
-            setsGanadosA++;
-        } else {
-            setsGanadosB++;
-        }
-
-
-        if (set2A > set2B) {
-            setsGanadosA++;
-        } else {
-            setsGanadosB++;
-        }
-
-
-        const necesitaTercero =
-            setsGanadosA === 1 &&
-            setsGanadosB === 1;
-
-
-        const sets = [
-            {
-                a:
-                    set1A,
-
-                b:
-                    set1B
-            },
-            {
-                a:
-                    set2A,
-
-                b:
-                    set2B
+                return {
+                    valido: false,
+                    mensaje: "Los games no pueden ser negativos."
+                };
             }
-        ];
 
 
-        if (necesitaTercero) {
+            // UNO TIENE QUE LLEGAR A 9
+
+            if (a !== 9 && b !== 9) {
+
+                return {
+                    valido: false,
+                    mensaje:
+                        "El partido a 9 games termina cuando una pareja llega a 9. Ejemplo válido: 9-7."
+                };
+            }
+
+
+            // No puede ser 9-9
+
+            if (a === 9 && b === 9) {
+
+                return {
+                    valido: false,
+                    mensaje:
+                        "El resultado 9-9 no es válido."
+                };
+            }
+
+
+            // El rival no puede tener más de 8
 
             if (
-                set3A === null ||
-                set3B === null ||
-                isNaN(set3A) ||
-                isNaN(set3B)
+                (a === 9 && b > 8) ||
+                (b === 9 && a > 8)
             ) {
 
                 return {
-                    valido:
-                        false,
-
+                    valido: false,
                     mensaje:
-                        formatoTorneo === "2_sets_supertiebreak" ||
-                        formatoTorneo === "2_sets_super"
-                            ? "Como cada pareja ganó un set, tenés que cargar el Super Tie-Break."
-                            : "Como cada pareja ganó un set, tenés que cargar el tercer set."
+                        "Si una pareja llega a 9, la otra debe tener como máximo 8."
                 };
-
             }
 
 
-            if (
-                set3A < 0 ||
-                set3B < 0
-            ) {
-
-                return {
-                    valido:
-                        false,
-
-                    mensaje:
-                        "El tercer resultado no puede ser negativo."
-                };
-
-            }
+            return {
+                valido: true
+            };
+        }
 
 
-            if (
-                set3A === set3B
-            ) {
+        // ==============================================
+        // 2 SETS + SUPER TIE BREAK
+        // ==============================================
 
-                return {
-                    valido:
-                        false,
+        if (
+            modalidad ===
+            "2_sets_supertiebreak"
+        ) {
 
-                    mensaje:
-                        formatoTorneo === "2_sets_supertiebreak" ||
-                        formatoTorneo === "2_sets_super"
-                            ? "El Super Tie-Break no puede terminar empatado."
-                            : "El tercer set no puede terminar empatado."
-                };
-
-            }
+            return validarFormatoSets(a, b);
+        }
 
 
-            if (set3A > set3B) {
-                setsGanadosA++;
-            } else {
-                setsGanadosB++;
-            }
+        // ==============================================
+        // PARTIDO COMPLETO
+        // ==============================================
 
+        if (
+            modalidad ===
+            "partido_completo"
+        ) {
 
-            sets.push({
-                a:
-                    set3A,
-
-                b:
-                    set3B
-            });
-
+            return validarFormatoSets(a, b);
         }
 
 
         return {
-            valido:
-                true,
-
-            resultado:
-                {
-                    tipo:
-                        formatoTorneo,
-
-                    sets:
-                        sets,
-
-                    setsGanadosA:
-                        setsGanadosA,
-
-                    setsGanadosB:
-                        setsGanadosB
-                }
+            valido: false,
+            mensaje: "Modalidad de torneo inválida."
         };
-
     }
 
+    // ========================================================
+    // VALIDAR SETS
+    // ========================================================
 
-    // =====================================================
-    // DIFERENCIA DE GAMES
-    // =====================================================
+    function validarFormatoSets(a, b) {
 
-    function obtenerDiferenciaGamesResultado(
-        resultado,
-        esParejaA
-    ) {
-
-        if (!resultado) {
-            return 0;
-        }
-
-
-        if (resultado.tipo === "9_games") {
-
-            return esParejaA
-                ? resultado.a - resultado.b
-                : resultado.b - resultado.a;
-
-        }
-
-
-        let diferencia = 0;
-
-
-        resultado.sets.forEach(set => {
-
-            diferencia += esParejaA
-                ? set.a - set.b
-                : set.b - set.a;
-
-        });
-
-
-        return diferencia;
-
-    }
-
-
-    // =====================================================
-    // ACTUALIZAR TABLA DE GRUPO
-    // =====================================================
-
-    function actualizarTablaGrupo(
-        partido
-    ) {
+        /*
+         * Para las modalidades con sets,
+         * se espera:
+         *
+         * 2-0
+         * 2-1
+         * 0-2
+         * 1-2
+         */
 
         if (
-            partido.fase !==
-            "grupos"
+            !Number.isInteger(a) ||
+            !Number.isInteger(b)
         ) {
 
-            return;
-
+            return {
+                valido: false,
+                mensaje: "Ingresá sets completos."
+            };
         }
 
 
-        const grupo =
-            grupos.find(
-                g =>
-                    g.id === partido.grupo
-            );
+        if (a < 0 || b < 0) {
 
-
-        if (!grupo) {
-            return;
+            return {
+                valido: false,
+                mensaje: "Los sets no pueden ser negativos."
+            };
         }
 
 
-        grupo.parejas.forEach(
-            pareja => {
+        if (a === b) {
+
+            return {
+                valido: false,
+                mensaje:
+                    "Un partido no puede terminar empatado."
+            };
+        }
+
+
+        if (
+            a > 2 ||
+            b > 2
+        ) {
+
+            return {
+                valido: false,
+                mensaje:
+                    "El máximo de sets ganados es 2."
+            };
+        }
+
+
+        if (
+            a === 2 &&
+            b === 2
+        ) {
+
+            return {
+                valido: false,
+                mensaje:
+                    "2-2 no es un resultado final."
+            };
+        }
+
+
+        if (
+            a === 1 &&
+            b === 0
+        ) {
+
+            return {
+                valido: false,
+                mensaje:
+                    "1-0 no es un partido terminado. Falta definir el segundo set."
+            };
+        }
+
+
+        if (
+            a === 0 &&
+            b === 1
+        ) {
+
+            return {
+                valido: false,
+                mensaje:
+                    "0-1 no es un partido terminado. Falta definir el segundo set."
+            };
+        }
+
+
+        return {
+            valido: true
+        };
+    }
+
+    // ========================================================
+    // GUARDAR RESULTADO
+    // ========================================================
+
+    function guardarResultadoPartido(
+        partido,
+        a,
+        b
+    ) {
+
+        partido.resultado = {
+            a,
+            b
+        };
+
+
+        partido.ganador =
+            a > b
+                ? partido.parejaA
+                : partido.parejaB;
+
+
+        actualizarTablas();
+
+        guardarTorneoActual();
+
+        mostrarTorneoGenerado();
+
+
+        mostrarMensaje(
+            "Resultado guardado correctamente.",
+            "success"
+        );
+    }
+
+    // ========================================================
+    // TABLAS
+    // ========================================================
+
+    function actualizarTablas() {
+
+        grupos.forEach(grupo => {
+
+            grupo.parejas.forEach(pareja => {
 
                 pareja.puntos = 0;
+                pareja.pj = 0;
+                pareja.dg = 0;
 
-                pareja.partidosJugados =
-                    0;
+            });
 
-                pareja.diferenciaGames =
-                    0;
-
-            }
-        );
+        });
 
 
         partidos
             .filter(
-                p =>
-                    p.grupo === grupo.id &&
-                    p.resultado &&
-                    p.fase === "grupos"
+                partido =>
+                    partido.fase === "grupos" &&
+                    partido.resultado
             )
-            .forEach(
-                p => {
+            .forEach(partido => {
 
-                    const parejaA =
-                        grupo.parejas.find(
-                            x =>
-                                x.id ===
-                                p.parejaA
-                        );
+                const parejaA =
+                    buscarPareja(
+                        partido.parejaA
+                    );
 
-
-                    const parejaB =
-                        grupo.parejas.find(
-                            x =>
-                                x.id ===
-                                p.parejaB
-                        );
+                const parejaB =
+                    buscarPareja(
+                        partido.parejaB
+                    );
 
 
-                    if (
-                        !parejaA ||
-                        !parejaB
-                    ) {
-                        return;
-                    }
+                if (!parejaA || !parejaB) {
+                    return;
+                }
 
 
-                    parejaA.partidosJugados++;
-
-                    parejaB.partidosJugados++;
-
-
-                    parejaA.diferenciaGames +=
-                        obtenerDiferenciaGamesResultado(
-                            p.resultado,
-                            true
-                        );
+                parejaA.pj++;
+                parejaB.pj++;
 
 
-                    parejaB.diferenciaGames +=
-                        obtenerDiferenciaGamesResultado(
-                            p.resultado,
-                            false
-                        );
+                const a =
+                    partido.resultado.a;
+
+                const b =
+                    partido.resultado.b;
 
 
-                    if (
-                        p.ganador === parejaA.id
-                    ) {
+                parejaA.dg +=
+                    a - b;
 
-                        parejaA.puntos += 2;
+                parejaB.dg +=
+                    b - a;
 
-                    }
 
-                    else if (
-                        p.ganador === parejaB.id
-                    ) {
+                if (a > b) {
 
-                        parejaB.puntos += 2;
+                    parejaA.puntos += 2;
 
-                    }
+                } else {
+
+                    parejaB.puntos += 2;
 
                 }
-            );
+
+            });
 
 
-        grupo.parejas.sort(
-            ordenarParejas
+        grupos.forEach(
+            ordenarGrupo
         );
 
 
-        grupo.parejas.forEach(
-            (pareja, index) => {
+        mostrarZonas();
 
-                pareja.posicion =
-                    index + 1;
+        mostrarTablas();
+
+        mostrarClasificados();
+
+        mostrarEliminacion();
+
+        actualizarEstadisticas();
+
+        guardarTorneoActual();
+    }
+
+    // ========================================================
+    // ORDENAR GRUPO
+    // ========================================================
+
+    function ordenarGrupo(grupo) {
+
+        grupo.parejas.sort(
+            (a, b) => {
+
+                // PUNTOS
+
+                if (
+                    b.puntos !==
+                    a.puntos
+                ) {
+
+                    return (
+                        b.puntos -
+                        a.puntos
+                    );
+                }
+
+
+                // DIFERENCIA
+
+                if (
+                    b.dg !==
+                    a.dg
+                ) {
+
+                    return (
+                        b.dg -
+                        a.dg
+                    );
+                }
+
+
+                // PARTIDOS GANADOS
+                // como último criterio
+
+                return (
+                    b.pj -
+                    a.pj
+                );
 
             }
         );
-
     }
 
+    // ========================================================
+    // MOSTRAR TABLAS
+    // ========================================================
 
-    // =====================================================
-    // LIMPIAR PARTIDOS INVÁLIDOS
-    // =====================================================
+    function mostrarTablas() {
 
-    function limpiarPartidosInvalidos() {
+        if (!contenedorTablas) return;
 
-        const idsValidos =
-            [];
+        contenedorTablas.innerHTML = "";
 
 
         grupos.forEach(grupo => {
 
-            const parejasOrdenadas =
-                [...grupo.parejas].sort(
-                    (a, b) =>
-                        (a.ordenZona || a.posicion) -
-                        (b.ordenZona || b.posicion)
-                );
+            ordenarGrupo(grupo);
 
 
-            if (grupo.parejas.length === 3) {
+            const tabla =
+                document.createElement("div");
 
-                for (
-                    let i = 0;
-                    i < parejasOrdenadas.length;
-                    i++
-                ) {
-
-                    for (
-                        let j = i + 1;
-                        j < parejasOrdenadas.length;
-                        j++
-                    ) {
-
-                        idsValidos.push(
-                            crearIdPartidoGrupo(
-                                grupo.id,
-                                parejasOrdenadas[i].id,
-                                parejasOrdenadas[j].id
-                            )
-                        );
-
-                    }
-
-                }
-
-            }
+            tabla.className =
+                "tabla-posicion";
 
 
-            if (grupo.parejas.length === 4) {
+            tabla.innerHTML = `
 
-                idsValidos.push(
-                    `zona4-${grupo.id}-p1`
-                );
+                <div class="tabla-posicion-header">
 
-                idsValidos.push(
-                    `zona4-${grupo.id}-p2`
-                );
+                    <h3>
+                        ${grupo.nombre}
+                    </h3>
+
+                </div>
+
+                <div class="tabla-posicion-fila encabezado">
+
+                    <span>#</span>
+                    <span>Pareja</span>
+                    <span>PJ</span>
+                    <span>PTS</span>
+                    <span>DG</span>
+
+                </div>
+
+                ${grupo.parejas.map((pareja, index) => `
+
+                    <div class="tabla-posicion-fila">
+
+                        <span>
+                            ${index + 1}
+                        </span>
+
+                        <span>
+                            ${escapeHTML(pareja.nombre)}
+                        </span>
+
+                        <span>
+                            ${pareja.pj || 0}
+                        </span>
+
+                        <span>
+                            ${pareja.puntos || 0}
+                        </span>
+
+                        <span>
+                            ${pareja.dg || 0}
+                        </span>
+
+                    </div>
+
+                `).join("")}
+
+            `;
 
 
-                const partido1 =
-                    partidos.find(
-                        p =>
-                            p.id === `zona4-${grupo.id}-p1`
-                    );
+            contenedorTablas.appendChild(tabla);
+
+        });
+    }
+
+    // ========================================================
+    // CLASIFICADOS
+    // ========================================================
+
+    function obtenerClasificados() {
+
+        if (!torneoActual) {
+            return [];
+        }
 
 
-                const partido2 =
-                    partidos.find(
-                        p =>
-                            p.id === `zona4-${grupo.id}-p2`
-                    );
+        const clasificados = [];
 
 
-                if (
-                    partido1 &&
-                    partido2 &&
-                    partido1.resultado &&
-                    partido2.resultado &&
-                    partido1.ganador &&
-                    partido2.ganador
-                ) {
+        grupos.forEach(grupo => {
 
-                    idsValidos.push(
-                        `zona4-${grupo.id}-p3`
-                    );
+            ordenarGrupo(grupo);
 
-                    idsValidos.push(
-                        `zona4-${grupo.id}-p4`
-                    );
 
-                }
+            grupo.parejas
+                .slice(
+                    0,
+                    torneoActual.clasificadosPorZona
+                )
+                .forEach((pareja, index) => {
 
-            }
+                    clasificados.push({
+
+                        pareja,
+
+                        posicion: index + 1,
+
+                        zona: grupo.nombre
+
+                    });
+
+                });
 
         });
 
 
-        partidos =
-            partidos.filter(partido => {
-
-                if (partido.fase !== "grupos") {
-                    return true;
-                }
-
-
-                return idsValidos.includes(
-                    partido.id
-                );
-
-            });
-
-    }
-
-
-    // =====================================================
-    // GENERAR ELIMINACIÓN
-    // =====================================================
-
-    function generarEliminacion() {
-
-        if (!cuadroEliminacion) {
-            return;
-        }
-
-
-        limpiarPartidosInvalidos();
-
-
-        cuadroEliminacion.innerHTML = "";
-
-
-        let clasificados = [];
-
-
-        grupos.forEach(
-            grupo => {
-
-                grupo.parejas.sort(
-                    ordenarParejas
-                );
-
-
-                const directos =
-                    grupo.parejas.slice(
-                        0,
-                        clasificadosPorGrupo
-                    );
-
-
-                directos.forEach(
-                    pareja => {
-
-                        clasificados.push({
-
-                            pareja:
-                                pareja,
-
-                            grupo:
-                                grupo.nombre,
-
-                            posicion:
-                                pareja.posicion
-
-                        });
-
-                    }
-                );
-
-            }
-        );
-
+        // ============================================
+        // MEJORES TERCEROS
+        // ============================================
 
         if (
-            mejoresTerceros > 0
+            torneoActual.mejoresTerceros > 0
         ) {
 
-            let terceros = [];
+            const terceros = [];
 
 
-            grupos.forEach(
-                grupo => {
+            grupos.forEach(grupo => {
 
-                    const tercero =
-                        grupo.parejas[2];
+                const tercero =
+                    grupo.parejas[2];
 
 
-                    if (tercero) {
+                if (tercero) {
 
-                        terceros.push({
+                    terceros.push({
 
-                            pareja:
-                                tercero,
+                        pareja: tercero,
 
-                            grupo:
-                                grupo.nombre,
+                        posicion: 3,
 
-                            posicion:
-                                3
+                        zona: grupo.nombre
 
-                        });
-
-                    }
+                    });
 
                 }
-            );
+
+            });
 
 
             terceros.sort(
@@ -3122,59 +2512,129 @@ document.addEventListener("DOMContentLoaded", () => {
                             b.pareja.puntos -
                             a.pareja.puntos
                         );
-
                     }
 
 
                     return (
-                        b.pareja.diferenciaGames -
-                        a.pareja.diferenciaGames
+                        b.pareja.dg -
+                        a.pareja.dg
                     );
 
                 }
             );
 
 
-            terceros =
-                terceros.slice(
+            terceros
+                .slice(
                     0,
-                    mejoresTerceros
+                    torneoActual.mejoresTerceros
+                )
+                .forEach(
+                    tercero =>
+                        clasificados.push(
+                            tercero
+                        )
                 );
 
-
-            clasificados.push(
-                ...terceros
-            );
-
         }
 
 
-        if (totalClasificados) {
+        return clasificados;
+    }
 
-            totalClasificados.textContent =
-                clasificados.length;
+    // ========================================================
+    // MOSTRAR CLASIFICADOS
+    // ========================================================
 
+    function mostrarClasificados() {
+
+        if (!listaClasificados) return;
+
+
+        const clasificados =
+            obtenerClasificados();
+
+
+        listaClasificados.innerHTML = "";
+
+
+        if (!clasificados.length) {
+
+            listaClasificados.innerHTML = `
+                <div class="sin-parejas">
+                    Todavía no hay clasificados.
+                </div>
+            `;
+
+            return;
         }
 
 
-        const partidosGrupo =
+        clasificados.forEach(
+            (item, index) => {
+
+                const div =
+                    document.createElement("div");
+
+                div.className =
+                    "clasificado-item";
+
+
+                div.innerHTML = `
+
+                    <div>
+
+                        <strong>
+                            ${index + 1}°
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                item.pareja.nombre
+                            )}
+                        </span>
+
+                    </div>
+
+                    <small>
+                        ${item.zona}
+                        -
+                        ${item.posicion}°
+                    </small>
+
+                `;
+
+
+                listaClasificados.appendChild(div);
+
+            }
+        );
+    }
+
+    // ========================================================
+    // ELIMINACION
+    // ========================================================
+
+    function mostrarEliminacion() {
+
+        if (!cuadroEliminacion) return;
+
+
+        cuadroEliminacion.innerHTML = "";
+
+
+        if (!torneoActual) return;
+
+
+        const pendientes =
             partidos.filter(
-                p =>
-                    p.fase === "grupos"
+                partido =>
+                    partido.fase === "grupos" &&
+                    !partido.resultado
             );
 
 
-        const partidosSinResultado =
-            partidosGrupo.filter(
-                p =>
-                    !p.resultado
-            );
-
-
-        if (
-            partidosSinResultado.length >
-            0
-        ) {
+        if (pendientes.length > 0) {
 
             cuadroEliminacion.innerHTML = `
 
@@ -3187,355 +2647,54 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p>
                         Faltan
                         <strong>
-                            ${partidosSinResultado.length}
+                            ${pendientes.length}
                         </strong>
-                        partidos por jugar.
+                        partidos.
                     </p>
 
                     <p>
-                        Cuando se completen los resultados,
-                        se generarán automáticamente
-                        los cruces.
+                        Cuando terminen todos los partidos,
+                        se habilitarán los cruces.
                     </p>
 
                 </div>
 
             `;
 
-
             return;
-
         }
 
 
-        if (
-            clasificados.length < 2
-        ) {
+        const clasificados =
+            obtenerClasificados();
+
+
+        if (clasificados.length < 2) {
 
             cuadroEliminacion.innerHTML = `
-
                 <div class="aviso-eliminacion">
-
-                    <h3>
-                        Clasificación pendiente
-                    </h3>
-
-                    <p>
-                        Todavía no hay suficientes
-                        clasificados.
-                    </p>
-
+                    No hay suficientes clasificados.
                 </div>
-
             `;
 
             return;
-
         }
 
 
-        generarLlaveEliminacion(
+        totalClasificados.textContent =
+            clasificados.length;
+
+
+        generarPrimeraRonda(
             clasificados
         );
-
-
-        mostrarRondasEliminacionGuardadas();
-
     }
 
-
-    // =====================================================
-    // ORDENAR PAREJAS
-    // =====================================================
-
-    function ordenarParejas(
-        a,
-        b
-    ) {
-
-        if (
-            b.puntos !==
-            a.puntos
-        ) {
-
-            return (
-                b.puntos -
-                a.puntos
-            );
-
-        }
-
-
-        return (
-            b.diferenciaGames -
-            a.diferenciaGames
-        );
-
-    }
-
-
-    // =====================================================
-    // ARMAR CRUCES INTELIGENTES
-    // =====================================================
-
-    function armarCrucesInteligentes(
-        clasificados
-    ) {
-
-        const primeros =
-            clasificados.filter(
-                c => c.posicion === 1
-            );
-
-
-        const segundos =
-            clasificados.filter(
-                c => c.posicion === 2
-            );
-
-
-        let cruces = [];
-
-
-        if (
-            primeros.length > 0 &&
-            primeros.length === segundos.length
-        ) {
-
-            const cantidadZonas =
-                primeros.length;
-
-
-            const salto =
-                Math.ceil(
-                    cantidadZonas / 2
-                );
-
-
-            primeros.forEach(
-                (primero, index) => {
-
-                    let rival =
-                        segundos[
-                            (index + salto) %
-                            cantidadZonas
-                        ];
-
-
-                    if (
-                        rival &&
-                        rival.grupo === primero.grupo
-                    ) {
-
-                        rival =
-                            segundos.find(
-                                segundo =>
-                                    segundo.grupo !== primero.grupo &&
-                                    !cruces.some(
-                                        cruce =>
-                                            cruce.parejaA === segundo ||
-                                            cruce.parejaB === segundo
-                                    )
-                            );
-
-                    }
-
-
-                    if (rival) {
-
-                        cruces.push({
-                            parejaA:
-                                primero,
-
-                            parejaB:
-                                rival
-                        });
-
-                    }
-
-                }
-            );
-
-
-            const usados =
-                new Set();
-
-
-            cruces.forEach(cruce => {
-
-                usados.add(
-                    cruce.parejaA
-                );
-
-                usados.add(
-                    cruce.parejaB
-                );
-
-            });
-
-
-            const sobrantes =
-                clasificados.filter(
-                    c =>
-                        !usados.has(c)
-                );
-
-
-            for (
-                let i = 0;
-                i < sobrantes.length;
-                i += 2
-            ) {
-
-                if (
-                    sobrantes[i] &&
-                    sobrantes[i + 1]
-                ) {
-
-                    cruces.push({
-                        parejaA:
-                            sobrantes[i],
-
-                        parejaB:
-                            sobrantes[i + 1]
-                    });
-
-                }
-
-            }
-
-
-            return cruces;
-
-        }
-
-
-        if (
-            primeros.length === clasificados.length
-        ) {
-
-            const cantidad =
-                primeros.length;
-
-
-            const salto =
-                Math.ceil(
-                    cantidad / 2
-                );
-
-
-            const usados =
-                new Set();
-
-
-            primeros.forEach(
-                (primero, index) => {
-
-                    if (
-                        usados.has(primero)
-                    ) {
-                        return;
-                    }
-
-
-                    const rival =
-                        primeros[
-                            (index + salto) %
-                            cantidad
-                        ];
-
-
-                    if (
-                        rival &&
-                        rival !== primero &&
-                        !usados.has(rival)
-                    ) {
-
-                        cruces.push({
-                            parejaA:
-                                primero,
-
-                            parejaB:
-                                rival
-                        });
-
-
-                        usados.add(
-                            primero
-                        );
-
-
-                        usados.add(
-                            rival
-                        );
-
-                    }
-
-                }
-            );
-
-
-            return cruces;
-
-        }
-
-
-        let disponibles =
-            [...clasificados];
-
-
-        while (
-            disponibles.length >= 2
-        ) {
-
-            const parejaA =
-                disponibles.shift();
-
-
-            let indiceRival =
-                disponibles.findIndex(
-                    p =>
-                        p.grupo !== parejaA.grupo
-                );
-
-
-            if (
-                indiceRival === -1
-            ) {
-
-                indiceRival = 0;
-
-            }
-
-
-            const parejaB =
-                disponibles.splice(
-                    indiceRival,
-                    1
-                )[0];
-
-
-            cruces.push({
-                parejaA:
-                    parejaA,
-
-                parejaB:
-                    parejaB
-            });
-
-        }
-
-
-        return cruces;
-
-    }
-
-
-    // =====================================================
-    // GENERAR LLAVE
-    // =====================================================
-
-    function generarLlaveEliminacion(
+    // ========================================================
+    // GENERAR PRIMERA RONDA
+    // ========================================================
+
+    function generarPrimeraRonda(
         clasificados
     ) {
 
@@ -3543,198 +2702,202 @@ document.addEventListener("DOMContentLoaded", () => {
             clasificados.length;
 
 
-        const nombreRonda =
-            obtenerNombreRonda(
-                cantidad
-            );
+        const ronda =
+            obtenerNombreRonda(cantidad);
 
 
-        const cruces =
-            armarCrucesInteligentes(
-                clasificados
-            );
+        const partidosRonda =
+            obtenerPartidosRonda(ronda);
 
 
-        const titulo =
-            document.createElement(
-                "h3"
-            );
+        // Si todavía no existen
+        // crear cruces
 
+        if (!partidosRonda.length) {
 
-        titulo.textContent =
-            nombreRonda;
-
-
-        cuadroEliminacion.appendChild(
-            titulo
-        );
-
-
-        const contenedor =
-            document.createElement(
-                "div"
-            );
-
-
-        contenedor.className =
-            "cruces";
-
-
-        cruces.forEach(
-            (cruce, index) => {
-
-                const parejaA =
-                    cruce.parejaA;
-
-
-                const parejaB =
-                    cruce.parejaB;
-
-
-                if (
-                    !parejaA ||
-                    !parejaB
-                ) {
-                    return;
-                }
-
-
-                const partidoId =
-                    `eliminacion-${nombreRonda}-${parejaA.pareja.id}-${parejaB.pareja.id}`;
-
-
-                let partido =
-                    partidos.find(
-                        p =>
-                            p.id === partidoId
-                    );
-
-
-                if (!partido) {
-
-                    partido = {
-
-                        id:
-                            partidoId,
-
-                        fase:
-                            nombreRonda,
-
-                        parejaA:
-                            parejaA.pareja.id,
-
-                        parejaB:
-                            parejaB.pareja.id,
-
-                        id_cancha:
-                            null,
-
-                        resultado:
-                            null,
-
-                        ganador:
-                            null
-
-                    };
-
-
-                    partidos.push(
-                        partido
-                    );
-
-                }
-
-
-                const subtitulo =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                subtitulo.className =
-                    "partido-numero";
-
-
-                subtitulo.textContent =
-                    `Partido ${index + 1} - ${parejaA.grupo} ${parejaA.posicion}° vs ${parejaB.grupo} ${parejaB.posicion}°`;
-
-
-                contenedor.appendChild(
-                    subtitulo
+            const cruces =
+                crearCrucesIniciales(
+                    clasificados
                 );
 
 
-                const div =
-                    crearPartidoHTML(
-                        partido,
-                        parejaA.pareja,
-                        parejaB.pareja
-                    );
+            cruces.forEach(cruce => {
+
+                partidos.push({
+
+                    id:
+                        `eliminacion_${ronda}_${cruce.a.id}_${cruce.b.id}`,
+
+                    fase:
+                        ronda,
+
+                    parejaA:
+                        cruce.a.id,
+
+                    parejaB:
+                        cruce.b.id,
+
+                    cancha: null,
+
+                    resultado: null,
+
+                    ganador: null
+
+                });
+
+            });
 
 
-                contenedor.appendChild(
-                    div
-                );
+            guardarTorneoActual();
 
-            }
-        );
-
-
-        cuadroEliminacion.appendChild(
-            contenedor
-        );
-
-    }
-
-
-    // =====================================================
-    // MOSTRAR RONDAS GUARDADAS
-    // =====================================================
-
-    function mostrarRondasEliminacionGuardadas() {
-
-        if (!cuadroEliminacion) {
-            return;
         }
 
 
-        const rondas = [
+        mostrarTodasLasRondas();
+    }
+
+    // ========================================================
+    // CREAR CRUCES
+    // ========================================================
+
+    function crearCrucesIniciales(
+        clasificados
+    ) {
+
+        const cruces = [];
+
+
+        /*
+         * Intentamos enfrentar:
+         *
+         * 1° de una zona
+         * contra
+         * 2° de otra zona
+         *
+         * evitando, cuando sea posible,
+         * que sean de la misma zona.
+         */
+
+
+        const usados =
+            new Set();
+
+
+        for (
+            let i = 0;
+            i < clasificados.length;
+            i++
+        ) {
+
+            if (usados.has(i)) {
+                continue;
+            }
+
+
+            let encontrado = -1;
+
+
+            for (
+                let j = i + 1;
+                j < clasificados.length;
+                j++
+            ) {
+
+                if (usados.has(j)) {
+                    continue;
+                }
+
+
+                if (
+                    clasificados[i].zona !==
+                    clasificados[j].zona
+                ) {
+
+                    encontrado = j;
+
+                    break;
+                }
+
+            }
+
+
+            if (encontrado === -1) {
+
+                for (
+                    let j = i + 1;
+                    j < clasificados.length;
+                    j++
+                ) {
+
+                    if (!usados.has(j)) {
+
+                        encontrado = j;
+
+                        break;
+                    }
+
+                }
+
+            }
+
+
+            if (encontrado !== -1) {
+
+                cruces.push({
+
+                    a:
+                        clasificados[i].pareja,
+
+                    b:
+                        clasificados[encontrado].pareja
+
+                });
+
+
+                usados.add(i);
+                usados.add(encontrado);
+
+            }
+
+        }
+
+
+        return cruces;
+    }
+
+    // ========================================================
+    // MOSTRAR TODAS LAS RONDAS
+    // ========================================================
+
+    function mostrarTodasLasRondas() {
+
+        if (!cuadroEliminacion) return;
+
+
+        cuadroEliminacion.innerHTML = "";
+
+
+        const orden = [
+
             "Ronda de 32",
             "Octavos de final",
             "Cuartos de final",
             "Semifinal",
             "Final"
+
         ];
 
 
-        rondas.forEach(ronda => {
+        orden.forEach(ronda => {
 
-            const partidosRonda =
+            const lista =
                 partidos.filter(
-                    p =>
-                        p.fase === ronda
+                    partido =>
+                        partido.fase === ronda
                 );
 
 
-            if (
-                partidosRonda.length === 0
-            ) {
-                return;
-            }
-
-
-            const yaEstaDibujada =
-                Array.from(
-                    cuadroEliminacion.querySelectorAll("h3")
-                ).some(
-                    titulo =>
-                        titulo.textContent.trim() === ronda
-                );
-
-
-            if (
-                yaEstaDibujada
-            ) {
+            if (!lista.length) {
                 return;
             }
 
@@ -3742,77 +2905,49 @@ document.addEventListener("DOMContentLoaded", () => {
             const titulo =
                 document.createElement("h3");
 
-
             titulo.textContent =
                 ronda;
-
-
-            cuadroEliminacion.appendChild(
-                titulo
-            );
 
 
             const contenedor =
                 document.createElement("div");
 
-
             contenedor.className =
                 "cruces";
 
 
-            partidosRonda.forEach((partido, index) => {
+            lista.forEach(
+                (partido, index) => {
 
-                const parejaA =
-                    obtenerPareja(
-                        partido.parejaA
+                    const numero =
+                        document.createElement(
+                            "div"
+                        );
+
+                    numero.className =
+                        "partido-numero";
+
+                    numero.textContent =
+                        `Partido ${index + 1}`;
+
+
+                    contenedor.appendChild(
+                        numero
                     );
 
 
-                const parejaB =
-                    obtenerPareja(
-                        partido.parejaB
-                    );
-
-
-                if (
-                    !parejaA ||
-                    !parejaB
-                ) {
-                    return;
-                }
-
-
-                const subtitulo =
-                    document.createElement("div");
-
-
-                subtitulo.className =
-                    "partido-numero";
-
-
-                subtitulo.textContent =
-                    `Partido ${index + 1}`;
-
-
-                contenedor.appendChild(
-                    subtitulo
-                );
-
-
-                const div =
-                    crearPartidoHTML(
+                    crearPartidoEliminacion(
                         partido,
-                        parejaA,
-                        parejaB
+                        contenedor
                     );
 
+                }
+            );
 
-                contenedor.appendChild(
-                    div
-                );
 
-            });
-
+            cuadroEliminacion.appendChild(
+                titulo
+            );
 
             cuadroEliminacion.appendChild(
                 contenedor
@@ -3820,37 +2955,261 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
+
+        comprobarCampeon();
     }
 
+    // ========================================================
+    // PARTIDO ELIMINACION
+    // ========================================================
 
-    // =====================================================
-    // SIGUIENTE RONDA
-    // =====================================================
-
-    function generarSiguienteRonda(
-        rondaActual
+    function crearPartidoEliminacion(
+        partido,
+        contenedor
     ) {
 
-        if (!rondaActual) {
-            return;
-        }
+        const parejaA =
+            buscarPareja(
+                partido.parejaA
+            );
 
-
-        const partidosRonda =
-            partidos.filter(
-                p =>
-                    p.fase === rondaActual
+        const parejaB =
+            buscarPareja(
+                partido.parejaB
             );
 
 
-        if (
-            partidosRonda.length === 0
-        ) {
+        if (!parejaA || !parejaB) {
             return;
         }
 
 
-        const todosJugados =
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "partido-card";
+
+
+        div.innerHTML = `
+
+            <div class="partido-info">
+
+                <span>
+                    ${escapeHTML(parejaA.nombre)}
+                </span>
+
+                <strong>
+                    VS
+                </strong>
+
+                <span>
+                    ${escapeHTML(parejaB.nombre)}
+                </span>
+
+            </div>
+
+
+            <div class="selector-cancha-partido">
+
+                <label>
+                    Cancha
+                </label>
+
+                <select class="cancha">
+
+                    <option value="">
+                        Seleccionar cancha
+                    </option>
+
+                    ${canchas.map(cancha => {
+
+                        const id =
+                            cancha.id_cancha ??
+                            cancha.id ??
+                            cancha.idCancha;
+
+                        const nombre =
+                            cancha.nombre ??
+                            cancha.nombre_cancha ??
+                            `Cancha ${id}`;
+
+                        return `
+
+                            <option
+                                value="${id}"
+                                ${Number(partido.cancha) === Number(id)
+                                    ? "selected"
+                                    : ""}
+                            >
+                                ${escapeHTML(nombre)}
+                            </option>
+
+                        `;
+
+                    }).join("")}
+
+                </select>
+
+            </div>
+
+
+            <div class="resultado-inputs">
+
+                <input
+                    type="number"
+                    min="0"
+                    class="resultado-a"
+                    value="${partido.resultado?.a ?? ""}"
+                    ${partido.resultado ? "disabled" : ""}
+                >
+
+                <span>
+                    -
+                </span>
+
+                <input
+                    type="number"
+                    min="0"
+                    class="resultado-b"
+                    value="${partido.resultado?.b ?? ""}"
+                    ${partido.resultado ? "disabled" : ""}
+                >
+
+                <button
+                    type="button"
+                    ${partido.resultado ? "disabled" : ""}
+                >
+                    ${
+                        partido.resultado
+                            ? "Resultado cargado"
+                            : "Guardar"
+                    }
+                </button>
+
+            </div>
+
+        `;
+
+
+        const select =
+            div.querySelector(".cancha");
+
+
+        select?.addEventListener(
+            "change",
+            () => {
+
+                partido.cancha =
+                    select.value
+                        ? Number(select.value)
+                        : null;
+
+                guardarTorneoActual();
+
+            }
+        );
+
+
+        const boton =
+            div.querySelector("button");
+
+
+        boton?.addEventListener(
+            "click",
+            () => {
+
+                const a =
+                    Number(
+                        div.querySelector(
+                            ".resultado-a"
+                        ).value
+                    );
+
+                const b =
+                    Number(
+                        div.querySelector(
+                            ".resultado-b"
+                        ).value
+                    );
+
+
+                if (!partido.cancha) {
+
+                    mostrarMensaje(
+                        "Seleccioná una cancha.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                const validacion =
+                    validarResultado(
+                        a,
+                        b,
+                        torneoActual.modalidad
+                    );
+
+
+                if (!validacion.valido) {
+
+                    mostrarMensaje(
+                        validacion.mensaje,
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                partido.resultado = {
+                    a,
+                    b
+                };
+
+
+                partido.ganador =
+                    a > b
+                        ? partido.parejaA
+                        : partido.parejaB;
+
+
+                guardarTorneoActual();
+
+
+                avanzarEliminacion(
+                    partido
+                );
+
+            }
+        );
+
+
+        contenedor.appendChild(div);
+    }
+
+    // ========================================================
+    // AVANZAR ELIMINACION
+    // ========================================================
+
+    function avanzarEliminacion(
+        partido
+    ) {
+
+        const ronda =
+            partido.fase;
+
+
+        const partidosRonda =
+            obtenerPartidosRonda(
+                ronda
+            );
+
+
+        const todosTerminados =
+            partidosRonda.length > 0 &&
             partidosRonda.every(
                 p =>
                     p.resultado &&
@@ -3858,177 +3217,100 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        if (!todosJugados) {
+        if (!todosTerminados) {
+
+            guardarTorneoActual();
+
+            mostrarTodasLasRondas();
+
             return;
         }
 
 
         const ganadores =
-            partidosRonda.map(
-                p =>
-                    obtenerPareja(
-                        p.ganador
-                    )
-            );
+            partidosRonda
+                .map(
+                    p =>
+                        buscarPareja(
+                            p.ganador
+                        )
+                )
+                .filter(Boolean);
 
 
-        if (
-            ganadores.length === 1
-        ) {
+        // ==========================================
+        // CAMPEÓN
+        // ==========================================
+
+        if (ganadores.length === 1) {
+
+            torneoActual.estado =
+                "finalizado";
+
+            torneoActual.campeon =
+                ganadores[0].id;
+
+
+            guardarTorneoActual();
 
             mostrarCampeon(
                 ganadores[0]
             );
 
-            guardarDatos();
-
             return;
-
         }
 
 
         const siguiente =
-            siguienteNombreRonda(
-                rondaActual
+            siguienteRonda(
+                ronda
             );
 
 
-        const yaExisteSiguiente =
-            partidos.some(
-                p =>
-                    p.fase === siguiente
+        // Si ya hay siguiente ronda,
+        // no duplicarla
+
+        const existentes =
+            obtenerPartidosRonda(
+                siguiente
             );
 
 
-        if (
-            yaExisteSiguiente
-        ) {
+        if (!existentes.length) {
 
-            mostrarRondasEliminacionGuardadas();
-
-            return;
-
-        }
-
-
-        const clasificados =
-            ganadores.map(
-                pareja => ({
-
-                    pareja:
-                        pareja,
-
-                    grupo:
-                        pareja.grupo ||
-                        "",
-
-                    posicion:
-                        pareja.posicion ||
-                        ""
-
-                })
-            );
-
-
-        generarRondaManual(
-            siguiente,
-            clasificados
-        );
-
-
-        guardarDatos();
-
-    }
-
-
-    // =====================================================
-    // GENERAR RONDA POSTERIOR
-    // =====================================================
-
-    function generarRondaManual(
-        nombreRonda,
-        clasificados
-    ) {
-
-        if (!cuadroEliminacion) {
-            return;
-        }
-
-
-        const titulo =
-            document.createElement(
-                "h3"
-            );
-
-
-        titulo.textContent =
-            nombreRonda;
-
-
-        cuadroEliminacion.appendChild(
-            titulo
-        );
-
-
-        const contenedor =
-            document.createElement(
-                "div"
-            );
-
-
-        contenedor.className =
-            "cruces";
-
-
-        for (
-            let i = 0;
-            i < clasificados.length;
-            i += 2
-        ) {
-
-            if (
-                !clasificados[i + 1]
+            for (
+                let i = 0;
+                i < ganadores.length;
+                i += 2
             ) {
-                continue;
-            }
+
+                const a =
+                    ganadores[i];
+
+                const b =
+                    ganadores[i + 1];
 
 
-            const parejaA =
-                clasificados[i].pareja;
+                if (!a || !b) {
+                    continue;
+                }
 
 
-            const parejaB =
-                clasificados[i + 1].pareja;
-
-
-            const partidoId =
-                `${nombreRonda}-${parejaA.id}-${parejaB.id}`;
-
-
-            let partido =
-                partidos.find(
-                    p =>
-                        p.id === partidoId
-                );
-
-
-            if (!partido) {
-
-                partido = {
+                partidos.push({
 
                     id:
-                        partidoId,
+                        `eliminacion_${siguiente}_${a.id}_${b.id}_${Date.now()}`,
 
                     fase:
-                        nombreRonda,
+                        siguiente,
 
                     parejaA:
-                        parejaA.id,
+                        a.id,
 
                     parejaB:
-                        parejaB.id,
+                        b.id,
 
-                    id_cancha:
+                    cancha:
                         null,
 
                     resultado:
@@ -4037,230 +3319,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     ganador:
                         null
 
-                };
-
-
-                partidos.push(
-                    partido
-                );
+                });
 
             }
 
-
-            const div =
-                crearPartidoHTML(
-                    partido,
-                    parejaA,
-                    parejaB
-                );
-
-
-            contenedor.appendChild(
-                div
-            );
-
         }
 
 
-        cuadroEliminacion.appendChild(
-            contenedor
-        );
+        guardarTorneoActual();
 
+
+        mostrarTodasLasRondas();
     }
 
-
-    // =====================================================
-    // CAMPEÓN
-    // =====================================================
-
-    function mostrarCampeon(
-        pareja
-    ) {
-
-        if (!cuadroEliminacion) {
-            return;
-        }
-
-
-        const yaHayCampeon =
-            cuadroEliminacion.querySelector(
-                ".campeon-torneo"
-            );
-
-
-        if (
-            yaHayCampeon
-        ) {
-            return;
-        }
-
-
-        const campeon =
-            document.createElement(
-                "div"
-            );
-
-
-        campeon.className =
-            "campeon-torneo";
-
-
-        campeon.innerHTML = `
-
-            <div>
-                🏆
-            </div>
-
-            <h2>
-                ¡CAMPEONES!
-            </h2>
-
-            <p>
-                ${pareja.nombre}
-            </p>
-
-            <button
-                id="btnNuevoTorneoFinal"
-                type="button"
-            >
-                🆕 Generar nuevo torneo
-            </button>
-
-        `;
-
-
-        cuadroEliminacion.appendChild(
-            campeon
-        );
-
-
-        const boton =
-            document.getElementById(
-                "btnNuevoTorneoFinal"
-            );
-
-
-        if (boton) {
-
-            boton.addEventListener(
-                "click",
-                nuevoTorneo
-            );
-
-        }
-
-    }
-
-
-    // =====================================================
-    // OBTENER PAREJA
-    // =====================================================
-
-    function obtenerPareja(
-        id
-    ) {
-
-        return parejas.find(
-            p =>
-                p.id === id
-        );
-
-    }
-
-
-    // =====================================================
-    // CATEGORÍAS
-    // =====================================================
-
-    function obtenerParejasPorCategoria(
-        categoria
-    ) {
-
-        if (!categoria) {
-            return [];
-        }
-
-
-        return parejas.filter(
-            pareja =>
-                pareja.categoria === categoria
-        );
-
-    }
-
-
-    function obtenerNombreCategoria(
-        categoria
-    ) {
-
-        switch (categoria) {
-
-            case "primera":
-                return "Primera categoría";
-
-            case "segunda":
-                return "Segunda categoría";
-
-            case "tercera":
-                return "Tercera categoría";
-
-            case "cuarta":
-                return "Cuarta categoría";
-
-            case "quinta":
-                return "Quinta categoría";
-
-            case "sexta":
-                return "Sexta categoría";
-
-            case "septima":
-                return "Séptima categoría";
-
-            case "octava":
-                return "Octava categoría";
-
-            default:
-                return "-";
-
-        }
-
-    }
-
-
-    // =====================================================
-    // SIGUIENTE NOMBRE DE RONDA
-    // =====================================================
-
-    function siguienteNombreRonda(
-        actual
-    ) {
-
-        const mapa = {
-
-            "Ronda de 32":
-                "Octavos de final",
-
-            "Octavos de final":
-                "Cuartos de final",
-
-            "Cuartos de final":
-                "Semifinal",
-
-            "Semifinal":
-                "Final"
-
-        };
-
-
-        return mapa[actual] ||
-            "Final";
-
-    }
-
-
-    // =====================================================
-    // NOMBRE DE RONDA
-    // =====================================================
+    // ========================================================
+    // RONDAS
+    // ========================================================
 
     function obtenerNombreRonda(
         cantidad
@@ -4283,810 +3357,552 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         return "Ronda de 32";
-
     }
 
 
-    // =====================================================
-    // FORMATO DEL TORNEO
-    // =====================================================
-
-    function obtenerNombreFormato(
-        formato
+    function siguienteRonda(
+        ronda
     ) {
 
-        switch (formato) {
+        const mapa = {
 
-            case "9_games":
+            "Ronda de 32":
+                "Octavos de final",
 
-                return "Partido a 9 games";
+            "Octavos de final":
+                "Cuartos de final",
 
-            case "2_sets_supertiebreak":
+            "Cuartos de final":
+                "Semifinal",
 
-                return "Mejor de 2 sets + Super Tie-Break";
+            "Semifinal":
+                "Final"
 
-            case "2_sets_super":
+        };
 
-                return "2 sets + Super Tie-Break";
 
-            case "partido_completo":
-
-                return "Partido completo - 3er set";
-
-            case "completo":
-
-                return "Partido completo";
-
-            default:
-
-                return "Partido de pádel";
-
-        }
-
+        return mapa[ronda] || "Final";
     }
 
 
-    // =====================================================
-    // MEZCLAR
-    // =====================================================
-
-    function mezclarArray(
-        array
+    function obtenerPartidosRonda(
+        ronda
     ) {
 
-        const copia =
-            [...array];
+        return partidos.filter(
+            partido =>
+                partido.fase === ronda
+        );
+    }
 
+    // ========================================================
+    // CAMPEÓN
+    // ========================================================
 
-        for (
-            let i =
-                copia.length - 1;
-            i > 0;
-            i--
-        ) {
+    function comprobarCampeon() {
 
-            const j =
-                Math.floor(
-                    Math.random() *
-                    (i + 1)
-                );
-
-
-            [
-                copia[i],
-                copia[j]
-            ] = [
-                copia[j],
-                copia[i]
-            ];
-
+        if (!torneoActual?.campeon) {
+            return;
         }
 
 
-        return copia;
+        const pareja =
+            buscarPareja(
+                torneoActual.campeon
+            );
 
+
+        if (!pareja) {
+            return;
+        }
+
+
+        mostrarCampeon(pareja);
     }
 
 
-    // =====================================================
-    // LOCALSTORAGE POR CATEGORÍA
-    // =====================================================
+    function mostrarCampeon(
+        pareja
+    ) {
+
+        if (!seccionCampeon) return;
+
+
+        seccionCampeon.classList.remove(
+            "oculto"
+        );
+
+
+        if (nombreCampeon) {
+
+            nombreCampeon.textContent =
+                pareja.nombre;
+
+        }
+
+
+        seccionCampeon.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    // ========================================================
+    // BUSCAR PAREJA
+    // ========================================================
+
+    function buscarPareja(id) {
+
+        return parejas.find(
+            pareja =>
+                Number(pareja.id) ===
+                Number(id)
+        );
+    }
+
+    // ========================================================
+    // GUARDAR TORNEO
+    // ========================================================
 
     function obtenerClaveTorneo() {
 
-        const categoriaActual =
-            categoriaTorneoInput?.value ||
-            categoriaTorneo ||
-            "";
-
-
-        if (!categoriaActual) {
-            return CLAVE_TORNEO_GENERAL;
+        if (!torneoActual?.id) {
+            return null;
         }
 
 
-        return `${CLAVE_TORNEO_GENERAL}_${categoriaActual}`;
-
+        return `clubDeportivo_torneo_${torneoActual.id}`;
     }
 
 
-    function guardarParejasGlobales() {
+    function guardarTorneoActual() {
 
-        localStorage.setItem(
-            CLAVE_PAREJAS,
-            JSON.stringify(parejas)
-        );
-
-    }
-
-
-    function cargarParejasGlobales() {
-
-        const parejasGuardadas =
-            localStorage.getItem(CLAVE_PAREJAS);
-
-
-        if (!parejasGuardadas) {
+        if (!torneoActual) {
             return;
         }
 
 
-        try {
+        const clave =
+            obtenerClaveTorneo();
 
-            parejas =
-                JSON.parse(parejasGuardadas) || [];
 
-        } catch (error) {
-
-            console.error(
-                "Error cargando parejas:",
-                error
-            );
-
-            parejas = [];
-
-        }
-
-    }
-
-
-    function cargarTorneoPorCategoria() {
-
-        const categoriaSeleccionada =
-            categoriaTorneoInput?.value || "";
-
-
-        if (!categoriaSeleccionada) {
-            return;
-        }
-
-
-        categoriaTorneo =
-            categoriaSeleccionada;
-
-
-        if (categoriaParejaInput) {
-            categoriaParejaInput.value = categoriaSeleccionada;
-        }
-
-
-        const datosGuardados =
-            localStorage.getItem(
-                `${CLAVE_TORNEO_GENERAL}_${categoriaSeleccionada}`
-            );
-
-
-        grupos = [];
-
-        partidos = [];
-
-        zonasPersonalizadas = [];
-
-        torneoGenerado = false;
-
-
-        parejasTorneoActual =
-            obtenerParejasPorCategoria(
-                categoriaTorneo
-            );
-
-
-        if (!datosGuardados) {
-
-            if (cantidadParejasInput) {
-                cantidadParejasInput.value = "";
-            }
-
-            if (cantidadGruposInput) {
-                cantidadGruposInput.value = "";
-            }
-
-            if (clasificadosPorGrupoInput) {
-                clasificadosPorGrupoInput.value = "";
-            }
-
-            if (mejoresTercerosInput) {
-                mejoresTercerosInput.value = 0;
-            }
-
-            if (formatoTorneoInput) {
-                formatoTorneoInput.value = "";
-            }
-
-            if (contenedorZonas) {
-                contenedorZonas.innerHTML = "";
-            }
-
-            if (cuadroEliminacion) {
-                cuadroEliminacion.innerHTML = "";
-            }
-
-            if (informacionTorneo) {
-                informacionTorneo.classList.add("oculto");
-            }
-
-            if (seccionEliminacion) {
-                seccionEliminacion.classList.add("oculto");
-            }
-
-
-            crearConfiguracionZonas(true);
-
-            mostrarParejas();
-
-            actualizarContador();
-
-            actualizarResumen();
-
-            return;
-
-        }
-
-
-        try {
-
-            const datos =
-                JSON.parse(
-                    datosGuardados
-                );
-
-
-            cantidadParejas =
-                datos.cantidadParejas ||
-                0;
-
-            cantidadGrupos =
-                datos.cantidadGrupos ||
-                0;
-
-            parejasPorGrupo =
-                datos.parejasPorGrupo ||
-                4;
-
-            clasificadosPorGrupo =
-                datos.clasificadosPorGrupo ||
-                2;
-
-            mejoresTerceros =
-                datos.mejoresTerceros ||
-                0;
-
-            formatoTorneo =
-                datos.formatoTorneo ||
-                "9_games";
-
-            categoriaTorneo =
-                datos.categoriaTorneo ||
-                categoriaSeleccionada;
-
-            zonasPersonalizadas =
-                datos.zonasPersonalizadas ||
-                [];
-
-            grupos =
-                datos.grupos ||
-                [];
-
-            partidos =
-                datos.partidos ||
-                [];
-
-            torneoGenerado =
-                datos.torneoGenerado ||
-                false;
-
-
-            parejasTorneoActual =
-                obtenerParejasPorCategoria(
-                    categoriaTorneo
-                );
-
-
-            if (cantidadParejasInput) {
-                cantidadParejasInput.value = cantidadParejas;
-            }
-
-            if (cantidadGruposInput) {
-                cantidadGruposInput.value = cantidadGrupos;
-            }
-
-            if (clasificadosPorGrupoInput) {
-                clasificadosPorGrupoInput.value = clasificadosPorGrupo;
-            }
-
-            if (mejoresTercerosInput) {
-                mejoresTercerosInput.value = mejoresTerceros;
-            }
-
-            if (formatoTorneoInput) {
-                formatoTorneoInput.value = formatoTorneo;
-            }
-
-
-            crearConfiguracionZonas(false);
-
-            mostrarParejas();
-
-            actualizarContador();
-
-            actualizarResumen();
-
-
-            if (
-                torneoGenerado &&
-                grupos.length > 0
-            ) {
-
-                mostrarZonas();
-
-                generarEliminacion();
-
-                if (informacionTorneo) {
-                    informacionTorneo.classList.remove("oculto");
-                }
-
-                if (seccionEliminacion) {
-                    seccionEliminacion.classList.remove("oculto");
-                }
-
-                if (totalParejas) {
-                    totalParejas.textContent = cantidadParejas;
-                }
-
-                if (totalGrupos) {
-                    totalGrupos.textContent = grupos.length;
-                }
-
-                if (nombreFormatoTorneo) {
-
-                    nombreFormatoTorneo.textContent =
-                        `${obtenerNombreCategoria(categoriaTorneo)} - ${obtenerNombreFormato(formatoTorneo)}`;
-
-                }
-
-            }
-
-        } catch (error) {
-
-            console.error(
-                "Error cargando torneo por categoría:",
-                error
-            );
-
-        }
-
-    }
-
-
-    // =====================================================
-    // NUEVO TORNEO
-    // =====================================================
-
-    if (btnNuevoTorneo) {
-
-        btnNuevoTorneo.addEventListener(
-            "click",
-            nuevoTorneo
-        );
-
-    }
-
-
-    function nuevoTorneo() {
-
-        const confirmar =
-            confirm(
-                "¿Querés comenzar un torneo nuevo? Se borrará solo el torneo de la categoría seleccionada."
-            );
-
-
-        if (!confirmar) {
-            return;
-        }
-
-
-        localStorage.removeItem(
-            obtenerClaveTorneo()
-        );
-
-
-        grupos = [];
-
-        partidos = [];
-
-        zonasPersonalizadas = [];
-
-        torneoGenerado = false;
-
-
-        if (contenedorZonas) {
-            contenedorZonas.innerHTML = "";
-        }
-
-        if (cuadroEliminacion) {
-            cuadroEliminacion.innerHTML = "";
-        }
-
-        if (informacionTorneo) {
-            informacionTorneo.classList.add("oculto");
-        }
-
-        if (seccionEliminacion) {
-            seccionEliminacion.classList.add("oculto");
-        }
-
-
-        crearConfiguracionZonas(true);
-
-        actualizarContador();
-
-        actualizarResumen();
-
-    }
-
-
-    // =====================================================
-    // GUARDAR
-    // =====================================================
-
-    function guardarDatos() {
-
-        cantidadParejas =
-            parseInt(
-                cantidadParejasInput?.value
-            ) ||
-            cantidadParejas ||
-            0;
-
-
-        cantidadGrupos =
-            parseInt(
-                cantidadGruposInput?.value
-            ) ||
-            cantidadGrupos ||
-            0;
-
-
-        parejasPorGrupo =
-            parseInt(
-                parejasPorGrupoInput?.value
-            ) ||
-            parejasPorGrupo ||
-            4;
-
-
-        clasificadosPorGrupo =
-            parseInt(
-                clasificadosPorGrupoInput?.value
-            ) ||
-            clasificadosPorGrupo ||
-            2;
-
-
-        mejoresTerceros =
-            parseInt(
-                mejoresTercerosInput?.value
-            ) ||
-            mejoresTerceros ||
-            0;
-
-
-        formatoTorneo =
-            formatoTorneoInput?.value ||
-            formatoTorneo ||
-            "9_games";
-
-
-        categoriaTorneo =
-            categoriaTorneoInput?.value ||
-            categoriaTorneo ||
-            "";
-
-
-        guardarParejasGlobales();
+        if (!clave) return;
 
 
         const datos = {
 
-            cantidadParejas,
-
-            cantidadGrupos,
-
-            parejasPorGrupo,
-
-            clasificadosPorGrupo,
-
-            mejoresTerceros,
-
-            formatoTorneo,
-
-            categoriaTorneo,
-
-            zonasPersonalizadas,
+            torneo: torneoActual,
 
             grupos,
 
-            partidos,
-
-            torneoGenerado
+            partidos
 
         };
 
 
         localStorage.setItem(
-            obtenerClaveTorneo(),
+            clave,
             JSON.stringify(datos)
         );
 
-    }
+
+        // Guardar como último torneo
+        localStorage.setItem(
+            "clubDeportivo_ultimoTorneo",
+            torneoActual.id
+        );
 
 
-    // =====================================================
-    // CARGAR
-    // =====================================================
-
-    function cargarTorneo() {
-
-        const categoriaSeleccionada =
-            categoriaTorneoInput?.value || "";
-
-
-        if (categoriaSeleccionada) {
-
-            cargarTorneoPorCategoria();
-
-            return;
-
-        }
+        // Guardar índice
+        const indice =
+            JSON.parse(
+                localStorage.getItem(
+                    "clubDeportivo_torneos"
+                )
+            ) || [];
 
 
-        const datosGuardados =
-            localStorage.getItem(
-                CLAVE_TORNEO_GENERAL
+        const existe =
+            indice.some(
+                torneo =>
+                    torneo.id ===
+                    torneoActual.id
             );
 
 
-        if (!datosGuardados) {
+        if (!existe) {
+
+            indice.push({
+
+                id:
+                    torneoActual.id,
+
+                nombre:
+                    torneoActual.nombre,
+
+                categoria:
+                    torneoActual.categoria,
+
+                modalidad:
+                    torneoActual.modalidad,
+
+                creado:
+                    torneoActual.creado,
+
+                estado:
+                    torneoActual.estado
+
+            });
+
+
+            localStorage.setItem(
+                "clubDeportivo_torneos",
+                JSON.stringify(indice)
+            );
+
+        }
+    }
+
+    // ========================================================
+    // CARGAR ÚLTIMO TORNEO
+    // ========================================================
+
+    function cargarUltimoTorneo() {
+
+        const ultimo =
+            localStorage.getItem(
+                "clubDeportivo_ultimoTorneo"
+            );
+
+
+        if (!ultimo) {
 
             mostrarParejas();
 
-            crearConfiguracionZonas(false);
+            return;
+        }
+
+
+        const datos =
+            localStorage.getItem(
+                `clubDeportivo_torneo_${ultimo}`
+            );
+
+
+        if (!datos) {
+
+            mostrarParejas();
 
             return;
-
         }
 
 
         try {
 
-            const datos =
-                JSON.parse(
-                    datosGuardados
-                );
+            const guardado =
+                JSON.parse(datos);
 
 
-            cantidadParejas =
-                datos.cantidadParejas ||
-                0;
-
-
-            cantidadGrupos =
-                datos.cantidadGrupos ||
-                0;
-
-
-            parejasPorGrupo =
-                datos.parejasPorGrupo ||
-                4;
-
-
-            clasificadosPorGrupo =
-                datos.clasificadosPorGrupo ||
-                2;
-
-
-            mejoresTerceros =
-                datos.mejoresTerceros ||
-                0;
-
-
-            formatoTorneo =
-                datos.formatoTorneo ||
-                "9_games";
-
-
-            categoriaTorneo =
-                datos.categoriaTorneo ||
-                "";
-
-
-            zonasPersonalizadas =
-                datos.zonasPersonalizadas ||
-                [];
+            torneoActual =
+                guardado.torneo;
 
 
             grupos =
-                datos.grupos ||
-                [];
+                guardado.grupos || [];
 
 
             partidos =
-                datos.partidos ||
-                [];
+                guardado.partidos || [];
 
 
-            torneoGenerado =
-                datos.torneoGenerado ||
-                false;
+            // Cargar datos del formulario
+
+            nombreTorneoInput.value =
+                torneoActual.nombre || "";
 
 
-            parejasTorneoActual =
-                obtenerParejasPorCategoria(
-                    categoriaTorneo
-                );
+            categoriaTorneoInput.value =
+                torneoActual.categoria || "";
 
 
-            if (
-                categoriaTorneoInput
-            ) {
-
-                categoriaTorneoInput.value =
-                    categoriaTorneo;
-
-            }
+            tipoTorneoInput.value =
+                torneoActual.modalidad || "";
 
 
-            if (
-                categoriaParejaInput &&
-                categoriaTorneo
-            ) {
-
-                categoriaParejaInput.value =
-                    categoriaTorneo;
-
-            }
+            cantidadParejasInput.value =
+                torneoActual.cantidadParejas || "";
 
 
-            if (
-                cantidadParejasInput &&
-                cantidadParejas
-            ) {
-
-                cantidadParejasInput.value =
-                    cantidadParejas;
-
-            }
+            cantidadGruposInput.value =
+                torneoActual.cantidadZonas || "";
 
 
-            if (
-                cantidadGruposInput &&
-                cantidadGrupos
-            ) {
-
-                cantidadGruposInput.value =
-                    cantidadGrupos;
-
-            }
+            clasificadosInput.value =
+                torneoActual.clasificadosPorZona || 2;
 
 
-            if (
-                parejasPorGrupoInput
-            ) {
-
-                parejasPorGrupoInput.value =
-                    parejasPorGrupo;
-
-            }
+            mejoresTercerosInput.value =
+                torneoActual.mejoresTerceros || 0;
 
 
-            if (
-                clasificadosPorGrupoInput
-            ) {
+            sincronizarCategoriaPareja();
 
-                clasificadosPorGrupoInput.value =
-                    clasificadosPorGrupo;
-
-            }
-
-
-            if (
-                mejoresTercerosInput
-            ) {
-
-                mejoresTercerosInput.value =
-                    mejoresTerceros;
-
-            }
-
-
-            if (
-                formatoTorneoInput
-            ) {
-
-                formatoTorneoInput.value =
-                    formatoTorneo;
-
-            }
-
-
-            crearConfiguracionZonas(false);
-
-
-            mostrarParejas();
-
+            actualizarDescripcionModalidad();
 
             actualizarContador();
 
+            actualizarConfiguracionZonas();
 
             actualizarResumen();
 
 
-            if (
-                torneoGenerado &&
-                grupos.length > 0
-            ) {
+            if (grupos.length) {
 
-                mostrarZonas();
+                mostrarTorneoGenerado();
 
-                generarEliminacion();
+            } else {
 
-                if (informacionTorneo) {
-
-                    informacionTorneo.classList.remove(
-                        "oculto"
-                    );
-
-                }
-
-                if (seccionEliminacion) {
-
-                    seccionEliminacion.classList.remove(
-                        "oculto"
-                    );
-
-                }
-
-
-                if (totalParejas) {
-
-                    totalParejas.textContent =
-                        cantidadParejas;
-
-                }
-
-
-                if (totalGrupos) {
-
-                    totalGrupos.textContent =
-                        grupos.length;
-
-                }
-
-
-                if (nombreFormatoTorneo) {
-
-                    nombreFormatoTorneo.textContent =
-                        `${obtenerNombreCategoria(categoriaTorneo)} - ${obtenerNombreFormato(formatoTorneo)}`;
-
-                }
+                mostrarPaso(1);
 
             }
 
-        }
 
-        catch (error) {
+        } catch (error) {
 
             console.error(
                 "Error cargando torneo:",
                 error
             );
 
-            localStorage.removeItem(
-                CLAVE_TORNEO_GENERAL
+        }
+
+
+        mostrarParejas();
+    }
+
+    // ========================================================
+    // NUEVO TORNEO
+    // ========================================================
+
+    function abrirModalNuevoTorneo() {
+
+        if (!modalNuevoTorneo) return;
+
+        modalNuevoTorneo.classList.add("activo");
+
+        modalNuevoTorneo.style.display = "flex";
+    }
+
+
+    function cerrarModalNuevoTorneo() {
+
+        if (!modalNuevoTorneo) return;
+
+        modalNuevoTorneo.classList.remove("activo");
+
+        modalNuevoTorneo.style.display = "none";
+    }
+
+
+    function crearNuevoTorneo() {
+
+        cerrarModalNuevoTorneo();
+
+
+        torneoActual = null;
+
+        grupos = [];
+
+        partidos = [];
+
+
+        // Limpiar formulario
+
+        nombreTorneoInput.value = "";
+
+        categoriaTorneoInput.value = "";
+
+        tipoTorneoInput.value = "";
+
+        cantidadParejasInput.value = "";
+
+        cantidadGruposInput.value = "";
+
+        clasificadosInput.value = "";
+
+        mejoresTercerosInput.value = "0";
+
+
+        sincronizarCategoriaPareja();
+
+
+        if (jugador1Input) {
+            jugador1Input.value = "";
+        }
+
+        if (jugador2Input) {
+            jugador2Input.value = "";
+        }
+
+
+        // Ocultar torneo generado
+
+        [
+            informacionTorneo,
+            seccionResultados,
+            seccionTablas,
+            seccionClasificados,
+            seccionEliminacion,
+            seccionCampeon
+        ].forEach(elemento => {
+
+            elemento?.classList.add(
+                "oculto"
             );
+
+        });
+
+
+        if (contenedorZonas) {
+            contenedorZonas.innerHTML = "";
+        }
+
+
+        if (contenedorPartidos) {
+            contenedorPartidos.innerHTML = "";
+        }
+
+
+        if (contenedorTablas) {
+            contenedorTablas.innerHTML = "";
+        }
+
+
+        if (listaClasificados) {
+            listaClasificados.innerHTML = "";
+        }
+
+
+        if (cuadroEliminacion) {
+            cuadroEliminacion.innerHTML = "";
+        }
+
+
+        actualizarDescripcionModalidad();
+
+        actualizarContador();
+
+        actualizarConfiguracionZonas();
+
+        actualizarResumen();
+
+        mostrarPaso(1);
+
+
+        mostrarMensaje(
+            "Configuración lista para crear un nuevo torneo.",
+            "success"
+        );
+    }
+
+    // ========================================================
+    // ESTADISTICAS
+    // ========================================================
+
+    function actualizarEstadisticas() {
+
+        if (!torneoActual) return;
+
+
+        if (totalParejas) {
+
+            totalParejas.textContent =
+                torneoActual.cantidadParejas;
 
         }
 
+
+        if (totalGrupos) {
+
+            totalGrupos.textContent =
+                grupos.length;
+
+        }
+
+
+        if (totalClasificados) {
+
+            totalClasificados.textContent =
+                obtenerClasificados().length;
+
+        }
     }
+
+    // ========================================================
+    // MENSAJES
+    // ========================================================
+
+    function mostrarMensaje(
+        texto,
+        tipo = "info"
+    ) {
+
+        if (!mensaje) {
+
+            alert(texto);
+
+            return;
+        }
+
+
+        mensaje.textContent =
+            texto;
+
+
+        mensaje.className =
+            `mensaje ${tipo}`;
+
+
+        mensaje.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+
+
+        setTimeout(() => {
+
+            mensaje.textContent = "";
+
+            mensaje.className =
+                "mensaje";
+
+        }, 5000);
+    }
+
+    // ========================================================
+    // SEGURIDAD HTML
+    // ========================================================
+
+    function escapeHTML(texto) {
+
+        if (texto === null ||
+            texto === undefined) {
+
+            return "";
+        }
+
+
+        return String(texto)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    // ========================================================
+    // FINAL
+    // ========================================================
+
+    mostrarParejas();
 
 });

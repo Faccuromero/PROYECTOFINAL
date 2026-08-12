@@ -25,7 +25,7 @@ const db = mysql.createConnection({
     user: "root",
     password: "",
     database: "club_deportivo",
-    port: 3307
+    port: 3306
 });
 
 // Si tu MySQL usa 3306, cambiá:

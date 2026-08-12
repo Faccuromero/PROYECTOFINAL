@@ -755,5 +755,18 @@ footer a:hover {
         width: 100%;
     }
 }
+.btn-whatsapp-menu {
+    background: #22c55e !important;
+    color: white !important;
+    padding: 10px 16px !important;
+    border-radius: 999px !important;
+    font-weight: 800 !important;
+    text-decoration: none !important;
+}
+
+.btn-whatsapp-menu:hover {
+    background: #16a34a !important;
+    color: white !important;
+}
 
 }

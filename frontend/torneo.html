@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Gestión de Torneos - Club Deportivo</title>
+
+<link rel="stylesheet" href="css/torneo.css">
+```
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+```
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+    <div>
+
+        <span class="etiqueta">
+            CLUB DEPORTIVO
+        </span>
+
+        <h1>
+            🏆 Gestión de Torneos
+        </h1>
+
+        <p>
+            Organizá torneos de pádel, zonas y eliminación directa.
+        </p>
+
+    </div>
+
+    <div class="header-botones">
+
+        <button
+            class="btn-nuevo-torneo"
+            id="btnNuevoTorneo"
+        >
+            🔄 Nuevo torneo
+        </button>
+
+        <button
+            class="btn-volver"
+            onclick="window.location.href='admin.html'"
+        >
+            ← Volver al administrador
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     CONFIGURACIÓN
+====================================================== -->
+
+<section class="panel">
+
+    <div class="titulo-panel">
+
+        <div>
+
+            <span>
+                CONFIGURACIÓN
+            </span>
+
+            <h2>
+                ⚙️ Crear nuevo torneo
+            </h2>
+
+            <p>
+                Configurá el formato antes de comenzar.
+            </p>
+
+        </div>
+
+        <div class="icono">
+            ⚙️
+        </div>
+
+    </div>
+
+
+    <div class="formulario">
+
+        <!-- TIPO DE TORNEO -->
+
+        <div class="campo campo-completo">
+
+            <label for="tipoTorneo">
+                Modalidad del torneo
+            </label>
+
+            <select id="tipoTorneo">
+
+                <option value="">
+                    Seleccioná el formato
+                </option>
+
+                <option value="9_games">
+                    🎾 Partido a 9 games
+                </option>
+
+                <option value="2_sets_supertiebreak">
+                    🎾 Mejor de 2 sets + Super Tie-Break
+                </option>
+
+                <option value="partido_completo">
+                    🎾 Partido completo - 3er set
+                </option>
+
+            </select>
+
+            <small id="descripcionTipoTorneo">
+                Seleccioná el formato que tendrá el torneo.
+            </small>
+
+        </div>
+
+
+        <!-- CANTIDAD DE PAREJAS -->
+
+        <div class="campo">
+
+            <label for="cantidadParejas">
+                Cantidad total de parejas
+            </label>
+
+            <input
+                type="number"
+                id="cantidadParejas"
+                min="2"
+                placeholder="Ej: 16"
+            >
+
+        </div>
+
+
+        <!-- CANTIDAD DE GRUPOS -->
+
+        <div class="campo">
+
+            <label for="cantidadGrupos">
+                Cantidad de zonas
+            </label>
+
+            <input
+                type="number"
+                id="cantidadGrupos"
+                min="1"
+                placeholder="Ej: 4"
+            >
+
+        </div>
+
+
+        <!-- CLASIFICADOS -->
+
+        <div class="campo">
+
+            <label for="clasificadosPorGrupo">
+                Clasificados por grupo
+            </label>
+
+            <input
+                type="number"
+                id="clasificadosPorGrupo"
+                min="1"
+                placeholder="Ej: 2"
+            >
+
+        </div>
+
+
+        <!-- MEJORES TERCEROS -->
+
+        <div class="campo">
+
+            <label for="cantidadMejoresTerceros">
+                Mejores terceros
+            </label>
+
+            <input
+                type="number"
+                id="cantidadMejoresTerceros"
+                min="0"
+                value="0"
+                placeholder="Ej: 2"
+            >
+
+            <small>
+                Cantidad de terceros que avanzarán a eliminación.
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="mensaje"
+        class="mensaje"
+    ></div>
+
+
+    <div class="resumen-configuracion" id="resumenConfiguracion">
+
+        <div>
+            <strong>Formato</strong>
+            <span id="resumenFormato">-</span>
+        </div>
+
+        <div>
+            <strong>Parejas</strong>
+            <span id="resumenParejas">-</span>
+        </div>
+
+        <div>
+            <strong>Zonas</strong>
+            <span id="resumenZonas">-</span>
+        </div>
+
+        <div>
+            <strong>Clasificados</strong>
+            <span id="resumenClasificados">-</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CARGAR PAREJAS
+====================================================== -->
+
+<section
+    id="seccionParejas"
+    class="panel"
+>
+
+    <div class="titulo-panel">
+
+        <div>
+
+            <span>
+                INSCRIPCIÓN
+            </span>
+
+            <h2>
+                👥 Cargar parejas
+            </h2>
+
+            <p>
+                Ingresá los dos jugadores de cada pareja.
+            </p>
+
+        </div>
+
+        <div class="icono">
+            👥
+        </div>
+
+    </div>
+
+
+    <!-- CONTADOR -->
+
+    <div class="contador-parejas">
+
+        <strong>
+            Parejas cargadas:
+        </strong>
+
+        <span id="contadorParejas">
+            0 / 0
+        </span>
+
+    </div>
+
+
+    <!-- FORMULARIO -->
+
+    <div class="formulario-pareja">
+
+        <div class="campo">
+
+            <label for="jugador1Nombre">
+                Jugador 1 - Nombre
+            </label>
+
+            <input
+                type="text"
+                id="jugador1Nombre"
+                placeholder="Ej: Juan"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="jugador1Apellido">
+                Jugador 1 - Apellido
+            </label>
+
+            <input
+                type="text"
+                id="jugador1Apellido"
+                placeholder="Ej: Pérez"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="jugador2Nombre">
+                Jugador 2 - Nombre
+            </label>
+
+            <input
+                type="text"
+                id="jugador2Nombre"
+                placeholder="Ej: Pedro"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label for="jugador2Apellido">
+                Jugador 2 - Apellido
+            </label>
+
+            <input
+                type="text"
+                id="jugador2Apellido"
+                placeholder="Ej: Gómez"
+            >
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="btnAgregarPareja"
+        class="btn-agregar"
+        type="button"
+    >
+        + Agregar pareja
+    </button>
+
+
+    <!-- LISTA -->
+
+    <div
+        id="listaParejas"
+        class="lista-parejas"
+    >
+
+        <div class="sin-parejas">
+            Todavía no agregaste ninguna pareja.
+        </div>
+
+    </div>
+
+
+    <!-- GENERAR -->
+
+    <button
+        id="btnGenerar"
+        class="btn-generar"
+        type="button"
+    >
+        🎲 Sortear zonas y generar torneo
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     INFORMACIÓN DEL TORNEO
+====================================================== -->
+
+<section
+    id="informacionTorneo"
+    class="panel oculto"
+>
+
+    <div class="info-torneo">
+
+        <div>
+
+            <span>
+                TORNEO GENERADO
+            </span>
+
+            <h2>
+                🏆 Torneo por zonas
+            </h2>
+
+            <p id="nombreFormatoTorneo">
+                -
+            </p>
+
+        </div>
+
+
+        <div class="estadisticas">
+
+            <div>
+
+                <strong id="totalParejas">
+                    0
+                </strong>
+
+                <span>
+                    Parejas
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="totalGrupos">
+                    0
+                </strong>
+
+                <span>
+                    Zonas
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="totalClasificados">
+                    0
+                </strong>
+
+                <span>
+                    Clasificados
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ZONAS
+====================================================== -->
+
+<section
+    id="contenedorZonas"
+    class="zonas"
+></section>
+
+
+<!-- =====================================================
+     RESULTADOS DE LOS PARTIDOS
+====================================================== -->
+
+<section
+    id="seccionResultados"
+    class="panel oculto"
+>
+
+    <div class="titulo-panel">
+
+        <div>
+
+            <span>
+                FASE DE GRUPOS
+            </span>
+
+            <h2>
+                📝 Cargar resultados
+            </h2>
+
+            <p>
+                Ingresá los resultados de cada partido.
+                La tabla se actualizará automáticamente.
+            </p>
+
+        </div>
+
+        <div class="icono">
+            🎾
+        </div>
+
+    </div>
+
+
+    <div
+        id="contenedorPartidos"
+        class="contenedor-partidos"
+    ></div>
+
+</section>
+
+
+<!-- =====================================================
+     TABLAS DE POSICIONES
+====================================================== -->
+
+<section
+    id="seccionTablas"
+    class="panel oculto"
+>
+
+    <div class="titulo-panel">
+
+        <div>
+
+            <span>
+                CLASIFICACIÓN
+            </span>
+
+            <h2>
+                📊 Tablas de posiciones
+            </h2>
+
+            <p>
+                Las posiciones se calculan según los resultados cargados.
+            </p>
+
+        </div>
+
+        <div class="icono">
+            📊
+        </div>
+
+    </div>
+
+
+    <div
+        id="contenedorTablas"
+        class="tablas-posiciones"
+    ></div>
+
+</section>
+
+
+<!-- =====================================================
+     CLASIFICADOS
+====================================================== -->
+
+<section
+    id="seccionClasificados"
+    class="panel oculto"
+>
+
+    <div class="titulo-panel">
+
+        <div>
+
+            <span>
+                FASE FINAL
+            </span>
+
+            <h2>
+                🎟️ Clasificados
+            </h2>
+
+            <p>
+                Parejas que avanzan a la eliminación directa.
+            </p>
+
+        </div>
+
+        <div class="icono">
+            🎟️
+        </div>
+
+    </div>
+
+
+    <div
+        id="listaClasificados"
+        class="lista-clasificados"
+    ></div>
+
+</section>
+
+
+<!-- =====================================================
+     ELIMINACIÓN DIRECTA
+====================================================== -->
+
+<section
+    id="seccionEliminacion"
+    class="panel oculto"
+>
+
+    <div class="titulo-panel">
+
+        <div>
+
+            <span>
+                FASE FINAL
+            </span>
+
+            <h2>
+                🏆 Eliminación directa
+            </h2>
+
+            <p>
+                Cargá los resultados y los cruces se irán
+                completando automáticamente.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- CUADRO -->
+
+    <div
+        id="cuadroEliminacion"
+        class="cuadro-eliminacion"
+    ></div>
+
+
+</section>
+
+
+<!-- =====================================================
+     CAMPEÓN
+====================================================== -->
+
+<section
+    id="seccionCampeon"
+    class="panel oculto"
+>
+
+    <div class="campeon">
+
+        <div class="trofeo">
+            🏆
+        </div>
+
+        <span>
+            CAMPEÓN DEL TORNEO
+        </span>
+
+        <h2 id="nombreCampeon">
+            -
+        </h2>
+
+        <p>
+            ¡Felicitaciones!
+        </p>
+
+    </div>
+
+
+    <button
+        id="btnNuevoTorneoFinal"
+        class="btn-generar"
+        type="button"
+    >
+        🔄 Crear nuevo torneo
+    </button>
+
+</section>
+```
+
+</div>
+
+<!-- =====================================================
+     MODAL NUEVO TORNEO
+====================================================== -->
+
+<div
+    id="modalNuevoTorneo"
+    class="modal"
+>
+
+```
+<div class="modal-contenido">
+
+    <h2>
+        🔄 Nuevo torneo
+    </h2>
+
+    <p>
+        ¿Estás seguro de que querés finalizar el torneo actual
+        y comenzar uno nuevo?
+    </p>
+
+    <p class="advertencia">
+        ⚠️ Se eliminarán los resultados, zonas y cruces
+        guardados del torneo actual.
+    </p>
+
+
+    <div class="modal-botones">
+
+        <button
+            id="btnCancelarNuevoTorneo"
+            class="btn-modal-cancelar"
+            type="button"
+        >
+            Cancelar
+        </button>
+
+        <button
+            id="btnConfirmarNuevoTorneo"
+            class="btn-modal-confirmar"
+            type="button"
+        >
+            Sí, nuevo torneo
+        </button>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="js/torneo.js"></script>
+
+</body>
+
+</html>
+
